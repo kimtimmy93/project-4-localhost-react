@@ -12,7 +12,7 @@ import UserShow from './components/UserShow'
 import MapContainer from '../src/components/MapContainer'
 
 import * as ROUTES from './constants/routes'
-import { firebase, doAddFile, auth, doSignOut } from '../src/firebase/firebase'
+// import { firebase, doAddFile, auth, doSignOut } from '../src/firebase/firebase'
 import './App.css';
 
 
@@ -21,17 +21,17 @@ class App extends Component {
     currentUser: null
   }
   async componentDidMount(){
-    auth.onAuthStateChanged(authUser => {
-      authUser
-        ? this.setState({
-          currentUser: {
-            displayName: authUser.email
-          }
-        })
-        : this.setState({
-          currentUser: null
-        })
-    })
+    // auth.onAuthStateChanged(authUser => {
+    //   authUser
+    //     ? this.setState({
+    //       currentUser: {
+    //         displayName: authUser.email
+    //       }
+    //     })
+    //     : this.setState({
+    //       currentUser: null
+    //     })
+    // })
   }
   doSetCurrentUser = (currentUser) => {
     this.setState({
