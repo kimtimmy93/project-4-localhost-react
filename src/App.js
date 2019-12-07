@@ -43,7 +43,24 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <MapContainer />
+        {
+          currentUser
+            ? <div>
+              {currentUser.displayName}
+              <button onClick={doSignOut}>Sign Out</button>
+              {/* <img src={currentUser.imgURL}/> */}
+            </div>
+            : null
+        }
+        <h1>Hello</h1>
+        {/* <MapContainer /> */}
+        <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser}/>
+        <Switch>
+        <Route exact path={ROUTES.HOME} render={() => <div>home</div>} />
+        <Route exact path={ROUTES.LOGIN} component={ Login } />
+        <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
+        <Route exact path={ROUTES.RESET} component={ ResetPassword } />
+      </Switch>
       </div>
     )
   }

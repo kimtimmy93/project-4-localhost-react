@@ -7,7 +7,6 @@ class Login extends Component {
     state = {
         email: '',
         password: '',
-        passwordTwo: '',
         error: null
     }
     onChange = e =>
@@ -27,9 +26,9 @@ class Login extends Component {
             })
     }
     render() {
-        const { email, password, passwordTwo, error } = this.state
+        const { email, password, error } = this.state
         const isInvalid =
-            password !== passwordTwo ||
+            password !== 
             password === '' ||
             email === ''
         return (
@@ -38,7 +37,6 @@ class Login extends Component {
                 <form onSubmit={this.onSubmit}>
                     <input type='text' name='email' value={email} placeholder="EMAIL" onChange={this.onChange}/>
                     <input type='text' name='password' value={password} placeholder="PASSWORD" onChange={this.onChange}/>
-                    <input type='text' name='passwordTwo' value={passwordTwo} placeholder="PASSWORD" onChange={this.onChange}/>
                     <input type='submit' value='submit' disabled={isInvalid}/>
                     {error && <p>{error.message}</p>}
                 </form>

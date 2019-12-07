@@ -9,6 +9,7 @@ const NavBar = () => {
             <NavLink to={ROUTES.HOME}>HOME</NavLink>
             <NavLink to={ROUTES.LOGIN}>LOGIN</NavLink>
             <NavLink to={ROUTES.SIGN_UP}>SIGNUP</NavLink>
+            <NavLink to={ROUTES.RESET}>Reset Password</NavLink>
         </div>
     )
 }
