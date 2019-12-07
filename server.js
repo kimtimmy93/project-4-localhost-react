@@ -6,9 +6,9 @@ const PORT = process.env.PORT || 8000
 require('./config/db')
 
 
-const User = require('./models/Users')
-const Host = require('./models/Hosts')
-const Post = require('./models/Posts')
+// const User = require('./models/Users')
+// const Host = require('./models/Hosts')
+// const Post = require('./models/Posts')
 
 
 const userController = require('./controllers/users')
