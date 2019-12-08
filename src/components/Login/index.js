@@ -28,7 +28,7 @@ class Login extends Component {
     render() {
         const { email, password, error } = this.state
         const isInvalid =
-            password !== 
+            // password !== 
             password === '' ||
             email === ''
         return (

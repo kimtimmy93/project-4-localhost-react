@@ -12,7 +12,7 @@ router.post('/hosts', async (req, res) => {
         res.json(createdHost)
     } catch(err) {
         console.log(err)
-    }
+    };
 });
 
 router.put('/hosts/:hostId', async (req, res) => {
