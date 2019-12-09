@@ -70,7 +70,7 @@ class App extends Component {
         <h1>Hello {this.state.message}</h1>
         <MapContainer 
         google={this.props.google}
-        center={{lat: 18.5204, lng: 74.8567}}
+        center={{lat: 34.052235, lng: -118.2437 }}
         height='300px'
         zoom={15}
         

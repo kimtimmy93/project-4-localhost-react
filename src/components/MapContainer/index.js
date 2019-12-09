@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from 'react-google-autocomplete'
 import Geocode from "react-geocode";
-Geocode.setApiKey("AIzaSyDGe5vjL8wBmilLzoJ0jNIwe9SAuH2xS_0");
+Geocode.setApiKey(process.env.REACT_APP_MAP_API_KEY);
 Geocode.enableDebug();
 
 class MapContainer extends Component{
@@ -49,13 +49,7 @@ constructor( props ){
    }
   );
  };
-/**
-  * Component should only update ( meaning re-render ), when the user selects the address, or drags the pin
-  *
-  * @param nextProps
-  * @param nextState
-  * @return {boolean}
-  */
+
  shouldComponentUpdate( nextProps, nextState ){
   if (
    this.state.markerPosition.lat !== this.props.center.lat ||
@@ -69,12 +63,7 @@ constructor( props ){
    return false
   }
  }
-/**
-  * Get the city and set the city input value to the one selected
-  *
-  * @param addressArray
-  * @return {string}
-  */
+
  getCity = ( addressArray ) => {
   let city = '';
   for( let i = 0; i < addressArray.length; i++ ) {
@@ -84,12 +73,7 @@ constructor( props ){
    }
   }
  };
-/**
-  * Get the area and set the area input value to the one selected
-  *
-  * @param addressArray
-  * @return {string}
-  */
+
  getArea = ( addressArray ) => {
   let area = '';
   for( let i = 0; i < addressArray.length; i++ ) {
@@ -103,12 +87,7 @@ constructor( props ){
    }
   }
  };
-/**
-  * Get the address and set the address input value to the one selected
-  *
-  * @param addressArray
-  * @return {string}
-  */
+
  getState = ( addressArray ) => {
   let state = '';
   for( let i = 0; i < addressArray.length; i++ ) {
@@ -120,27 +99,11 @@ constructor( props ){
    }
   }
  };
-/**
-  * And function for city,state and address input
-  * @param event
-  */
+
  onChange = ( event ) => {
   this.setState({ [event.target.name]: event.target.value });
  };
-/**
-  * This Event triggers when the marker window is closed
-  *
-  * @param event
-  */
- onInfoWindowClose = ( event ) => {
-};
- /**
-  * When the marker is dragged you get the lat and long using the functions available from event object.
-  * Use geocode to get the address, city, area and state from the lat and lng positions.
-  * And then set those values in the state.
-  *
-  * @param event
-  */
+
  onMarkerDragEnd = ( event ) => {
     console.log( 'event', event );
     let newLat = event.latLng.lat(),
@@ -208,14 +171,6 @@ const AsyncMap = withScriptjs(
        onPlaceSelected={ this.onPlaceSelected }
        types={['(regions)']}
       />
-         <InfoWindow
-       onClose={this.onInfoWindowClose}
-       position={{ lat: ( this.state.markerPosition.lat + 0.0018 ), lng: this.state.markerPosition.lng }}
-      >
-       <div>
-        <span style={{ padding: 0, margin: 0 }}>{ this.state.address }</span>
-       </div>
-      </InfoWindow>
           <Marker google={this.props.google}
             name={'Dolores park'}
             draggable={true}
