@@ -13,7 +13,7 @@ import HostList from './components/HostList'
 import MapContainer from '../src/components/MapContainer'
 
 import * as ROUTES from './constants/routes'
-import { firebase, doAddFile, auth, doSignOut } from '../src/firebase/firebase'
+import { firebase, doAddFile, auth } from '../src/firebase/firebase'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -60,17 +60,17 @@ class App extends Component {
         <NavBar isLogged = {this.state.isLogged}/>
         
         <h1>Hello {this.state.message}</h1>
-        {/* <MapContainer 
+        <MapContainer 
         google={this.props.google}
         center={{lat: 34.052235, lng: -118.2437 }}
         height='300px'
         zoom={15}
-        /> */}
+        />
         <Switch>
           <Route exact path={ROUTES.HOME} render={() => <div>home</div>}  render={() => <HostList />} />
           <Route exact path={ROUTES.LOGIN} component={ Login } render={() => <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser}/>} />
           <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
-          <Route exact path ={ROUTES.LOGOUT} onClick={doSignOut}/>
+          <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
         </Switch>
       </div>

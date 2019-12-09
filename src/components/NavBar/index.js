@@ -2,14 +2,17 @@ import React from 'react'
 // import { NavLink } from 'react-router-dom'
 import Autocomplete from 'react-google-autocomplete'
 // import MapContainer from '../MapContainer'
+import { doSignOut } from '../../firebase/firebase'
+
+
 
 import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap'
 
 import * as ROUTES from '../../constants/routes'
 
 const NavBar = props => {
-    const searchbox = () => {
-        props.onPlaceSelected(props.place);
+    const search = () => {
+        props.onPlaceSelected();
     }
     return(
         <div>
@@ -33,9 +36,16 @@ const NavBar = props => {
                 : ''
             }
           </Nav>
-          {/* <Form inline> */}
-            <Nav.Link href={ROUTES.LOGOUT}>LOGOUT</Nav.Link>
-          {/* </Form> */}
+            {
+                props.isLogged
+                ?<Nav.Link href={ROUTES.LOGOUT} onClick={doSignOut}>LOGOUT</Nav.Link>
+                : ''
+            }
+   
+            <Form inline>
+                <FormControl type="text" placeholder="Search" className=" mr-sm-2" onChange={search} />
+                <Button type="submit" >Submit</Button>
+            </Form>
         </Navbar>
       </>
     </div>
