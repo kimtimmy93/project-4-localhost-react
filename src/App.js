@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom'
 
 import NavBar from './components/NavBar'
+import HostList from './components/HostList'
 import HostShow from './components/HostShow'
 import UserShow from './components/UserShow'
 import SignInWithGoogle from './components/SignInWithGoogle'
 import SignUpWithEmailPassword from './components/SignUpWithEmailPassword'
 import Login from './components/Login'
 import ResetPassword from './components/ResetPassword'
-import HostList from './components/HostList'
+
+
 
 import MapContainer from '../src/components/MapContainer'
 
@@ -89,6 +91,7 @@ class App extends Component {
           <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
+          <Route exact path={ROUTES.HOST} />
         </Switch>
       </div>
     )
