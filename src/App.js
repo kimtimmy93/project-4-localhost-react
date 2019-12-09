@@ -68,7 +68,13 @@ class App extends Component {
             : null
         }
         <h1>Hello {this.state.message}</h1>
-        <MapContainer />
+        <MapContainer 
+        google={this.props.google}
+        center={{lat: 18.5204, lng: 74.8567}}
+        height='300px'
+        zoom={15}
+        
+        />
         <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser}/>
         <HostList />
         <Switch>
