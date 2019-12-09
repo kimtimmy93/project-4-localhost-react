@@ -164,7 +164,7 @@ const AsyncMap = withScriptjs(
       defaultZoom={this.props.zoom}
       defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
      >
-         <Autocomplete
+    <Autocomplete
        style={{
         width: '100%',
         height: '40px',
@@ -174,7 +174,7 @@ const AsyncMap = withScriptjs(
        }}
        onPlaceSelected={ this.onPlaceSelected}
         types={['(regions)']} />
-          <Marker google={this.props.google}
+    <Marker google={this.props.google}
             name={'Dolores park'}
             draggable={true}
             onDragEnd={ this.onMarkerDragEnd }
