@@ -47,6 +47,21 @@ class App extends Component {
     })
   
   }
+  addProfilePicture = event => {
+    doAddFile(event.target.files[0])
+      .then(file => file.ref.getDownloadURL())
+      .then(async url => {
+        const updatedUser = await fetch(`auth/users/${this.state.currentUser._id}`, {
+          method: 'PUT',
+          body: JSON.stringify({imgURL: url}),
+          headers: {
+            'Content-type': 'application/json'
+          }
+        })
+        const updatedUserJson = await updatedUser.json()
+        this.doSetCurrentUser(updatedUserJson)
+      })
+  }
   doSetCurrentUser = currentUser => {
     this.setState({
       currentUser
@@ -57,18 +72,20 @@ class App extends Component {
     const { currentUser } = this.state
     return (
       <div>
-        <NavBar isLogged = {this.state.isLogged}/>
-        
+        <NavBar isLogged = {this.state.isLogged} currentUser={this.state.currentUser}/>
         <h1>Hello {this.state.message}</h1>
-        <MapContainer 
-        google={this.props.google}
-        center={{lat: 34.052235, lng: -118.2437 }}
-        height='300px'
-        zoom={15}
-        />
+        { !this.state.isLogged
+        ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
+        : ''
+        }
         <Switch>
-          <Route exact path={ROUTES.HOME} render={() => <div>home</div>}  render={() => <HostList />} />
-          <Route exact path={ROUTES.LOGIN} component={ Login } render={() => <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser}/>} />
+          <Route exact path={ROUTES.HOME} render={() => <div>home</div>}  render={() => <MapContainer
+          google={this.props.google}
+          center={{lat: 34.052235, lng: -118.2437 }}
+          height='300px'
+          zoom={15}
+          />}/>
+          <Route exact path={ROUTES.LOGIN} component={ Login } />
           <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />

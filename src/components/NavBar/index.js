@@ -11,15 +11,8 @@ import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap'
 import * as ROUTES from '../../constants/routes'
 
 const NavBar = props => {
-    const search = () => {
-        props.onPlaceSelected();
-    }
     return(
         <div>
-            {/* <NavLink to={ROUTES.HOME}>HOME</NavLink>
-            <NavLink to={ROUTES.LOGIN}>LOGIN</NavLink>
-            <NavLink to={ROUTES.SIGN_UP}>SIGNUP</NavLink>
-            <NavLink to={ROUTES.RESET}>Reset Password</NavLink> */}
         <>
         <Navbar bg="light" variant="light">
           <Navbar.Brand href={ROUTES.HOME}>Local:Host</Navbar.Brand>
@@ -38,14 +31,14 @@ const NavBar = props => {
           </Nav>
             {
                 props.isLogged
+                ?<Nav.Link href={ROUTES.PROFILE}>{props.currentUser.displayName}</Nav.Link>
+                : ''
+            }
+            {
+                props.isLogged
                 ?<Nav.Link href={ROUTES.LOGOUT} onClick={doSignOut}>LOGOUT</Nav.Link>
                 : ''
             }
-   
-            <Form inline>
-                <FormControl type="text" placeholder="Search" className=" mr-sm-2" onChange={search} />
-                <Button type="submit" >Submit</Button>
-            </Form>
         </Navbar>
       </>
     </div>

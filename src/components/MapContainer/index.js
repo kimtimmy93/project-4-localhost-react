@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Autocomplete from 'react-google-autocomplete'
 import Geocode from "react-geocode";
 import NavBar from '../NavBar'
@@ -164,17 +165,15 @@ const AsyncMap = withScriptjs(
       defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
      >
          <Autocomplete
-    //    style={{
-    //     width: '100%',
-    //     height: '40px',
-    //     paddingLeft: '16px',
-    //     marginTop: '2px',
-    //     marginBottom: '100px'
-    //    }}
-       onPlaceSelected={ this.onPlaceSelected }
-       types={['(regions)']}
-      />
-          
+       style={{
+        width: '100%',
+        height: '40px',
+        paddingLeft: '16px',
+        marginTop: '2px',
+        marginBottom: '100px'
+       }}
+       onPlaceSelected={ this.onPlaceSelected}
+        types={['(regions)']} />
           <Marker google={this.props.google}
             name={'Dolores park'}
             draggable={true}
@@ -190,7 +189,7 @@ let map;
   if( this.props.center.lat !== undefined ) {
    map = <div>
      <div>
-      <div className="form-group">
+      {/* <div className="form-group">
        <label htmlFor="">City</label>
        <input type="text" name="city" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.city }/>
       </div>
@@ -201,13 +200,13 @@ let map;
       <div className="form-group">
        <label htmlFor="">State</label>
        <input type="text" name="state" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.state }/>
-      </div>
+      </div> */}
       <div className="form-group">
        <label htmlFor="">Address</label>
        <input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
       </div>
      </div>
-
+    
      <AsyncMap
       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&libraries=places"
       loadingElement={
