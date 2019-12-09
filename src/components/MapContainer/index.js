@@ -133,6 +133,37 @@ constructor( props ){
   */
  onInfoWindowClose = ( event ) => {
 };
+ /**
+  * When the marker is dragged you get the lat and long using the functions available from event object.
+  * Use geocode to get the address, city, area and state from the lat and lng positions.
+  * And then set those values in the state.
+  *
+  * @param event
+  */
+ onMarkerDragEnd = ( event ) => {
+    console.log( 'event', event );
+    let newLat = event.latLng.lat(),
+     newLng = event.latLng.lng(),
+     addressArray = [];
+  Geocode.fromLatLng( newLat , newLng ).then(
+     response => {
+      const address = response.results[0].formatted_address,
+       addressArray =  response.results[0].address_components,
+       city = this.getCity( addressArray ),
+       area = this.getArea( addressArray ),
+       state = this.getState( addressArray );
+  this.setState( {
+       address: ( address ) ? address : '',
+       area: ( area ) ? area : '',
+       city: ( city ) ? city : '',
+       state: ( state ) ? state : ''
+      } )
+     },
+     error => {
+      console.error(error);
+     }
+    );
+   };
 render(){
 const AsyncMap = withScriptjs(
    withGoogleMap(
@@ -141,6 +172,21 @@ const AsyncMap = withScriptjs(
       defaultZoom={this.props.zoom}
       defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
      >
+         <InfoWindow
+       onClose={this.onInfoWindowClose}
+       position={{ lat: ( this.state.markerPosition.lat + 0.0018 ), lng: this.state.markerPosition.lng }}
+      >
+       <div>
+        <span style={{ padding: 0, margin: 0 }}>{ this.state.address }</span>
+       </div>
+      </InfoWindow>
+          <Marker google={this.props.google}
+            name={'Dolores park'}
+            draggable={true}
+            onDragEnd={ this.onMarkerDragEnd }
+            position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
+      />
+      <Marker />
 </GoogleMap>
 )
    )
@@ -166,6 +212,7 @@ let map;
        <input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
       </div>
      </div>
+
      <AsyncMap
       googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg&libraries=places"
       loadingElement={
