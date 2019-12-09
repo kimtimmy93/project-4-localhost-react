@@ -56,33 +56,23 @@ class App extends Component {
   render(){
     const { currentUser } = this.state
     return (
-      <div className="App">
+      <div>
         <NavBar isLogged = {this.state.isLogged}/>
-        {
-          currentUser
-            ? <div>
-              {currentUser.displayName}
-              <button onClick={doSignOut}>Sign Out</button>
-              {/* <img src={currentUser.imgURL}/> */}
-            </div>
-            : null
-        }
+        
         <h1>Hello {this.state.message}</h1>
-        <MapContainer 
+        {/* <MapContainer 
         google={this.props.google}
         center={{lat: 34.052235, lng: -118.2437 }}
         height='300px'
         zoom={15}
-        
-        />
-        <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser}/>
-        <HostList />
+        /> */}
         <Switch>
-          <Route exact path={ROUTES.HOME} render={() => <div>home</div>} />
-          <Route exact path={ROUTES.LOGIN} component={ Login } />
+          <Route exact path={ROUTES.HOME} render={() => <div>home</div>}  render={() => <HostList />} />
+          <Route exact path={ROUTES.LOGIN} component={ Login } render={() => <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser}/>} />
           <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
+          <Route exact path ={ROUTES.LOGOUT} onClick={doSignOut}/>
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
-      </Switch>
+        </Switch>
       </div>
     )
   }

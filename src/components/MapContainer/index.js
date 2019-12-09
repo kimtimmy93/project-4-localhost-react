@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from 'react-google-autocomplete'
 import Geocode from "react-geocode";
+import NavBar from '../NavBar'
+
 Geocode.setApiKey(process.env.REACT_APP_MAP_API_KEY);
 Geocode.enableDebug();
 
@@ -156,21 +158,23 @@ render(){
 const AsyncMap = withScriptjs(
    withGoogleMap(
     props => (
+        
      <GoogleMap google={this.props.google}
       defaultZoom={this.props.zoom}
       defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
      >
-          <Autocomplete
-       style={{
-        width: '100%',
-        height: '40px',
-        paddingLeft: '16px',
-        marginTop: '2px',
-        marginBottom: '100px'
-       }}
+         <Autocomplete
+    //    style={{
+    //     width: '100%',
+    //     height: '40px',
+    //     paddingLeft: '16px',
+    //     marginTop: '2px',
+    //     marginBottom: '100px'
+    //    }}
        onPlaceSelected={ this.onPlaceSelected }
        types={['(regions)']}
       />
+          
           <Marker google={this.props.google}
             name={'Dolores park'}
             draggable={true}

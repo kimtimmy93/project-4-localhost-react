@@ -1,10 +1,16 @@
 import React from 'react'
 // import { NavLink } from 'react-router-dom'
+import Autocomplete from 'react-google-autocomplete'
+// import MapContainer from '../MapContainer'
+
 import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap'
 
 import * as ROUTES from '../../constants/routes'
 
 const NavBar = props => {
+    const searchbox = () => {
+        props.onPlaceSelected(props.place);
+    }
     return(
         <div>
             {/* <NavLink to={ROUTES.HOME}>HOME</NavLink>
@@ -27,10 +33,9 @@ const NavBar = props => {
                 : ''
             }
           </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-primary">Search</Button>
-          </Form>
+          {/* <Form inline> */}
+            <Nav.Link href={ROUTES.LOGOUT}>LOGOUT</Nav.Link>
+          {/* </Form> */}
         </Navbar>
       </>
     </div>
