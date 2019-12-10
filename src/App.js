@@ -9,6 +9,7 @@ import UserShow from './components/UserShow'
 import SignInWithGoogle from './components/SignInWithGoogle'
 import SignUpWithEmailPassword from './components/SignUpWithEmailPassword'
 import Login from './components/Login'
+import CreatePost from './components/CreatePostForm'
 import ResetPassword from './components/ResetPassword'
 
 
@@ -81,7 +82,8 @@ class App extends Component {
         ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
         : ''
         }
-        <PostContainer />
+        {/* <PostContainer /> */}
+        <CreatePost />
         <Switch>
           <Route exact path={ROUTES.HOME} render={() => <div>home</div>}  render={() => <MapContainer
           google={this.props.google}
