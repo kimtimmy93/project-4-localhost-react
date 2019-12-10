@@ -13,9 +13,6 @@ import CreatePost from './components/CreatePostForm'
 import ResetPassword from './components/ResetPassword'
 
 
-
-import MapContainer from '../src/components/MapContainer'
-
 import * as ROUTES from './constants/routes'
 import { firebase, doAddFile, auth } from '../src/firebase/firebase'
 import './App.css';
@@ -73,6 +70,23 @@ class App extends Component {
     })
    
   }
+  addPost = async (e, postFromForm) => {
+    e.preventDefault();
+    try {
+      const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/`, { 
+          method: 'POST',
+          body: JSON.stringify(postFromForm),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      const parsedResponse = await createdPostResponse.json();
+      this.setState({postsCreated: [...this.state.postsCreated, parsedResponse.data]})
+      this.props.history.push('/')
+  } catch(err){
+      console.log(err)
+  }
+}
   render(){
     // const { currentUser } = this.state
     return (
@@ -91,7 +105,7 @@ class App extends Component {
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
-          <Route exact path={ROUTES.NEW} component={ CreatePost } />
+          <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} /> } />
           <Route exact path={ROUTES.PROFILE} render={() => <UserShow /> } />
         </Switch>
       </div>

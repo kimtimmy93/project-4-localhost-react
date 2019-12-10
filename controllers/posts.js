@@ -3,8 +3,13 @@ const router = express.Router();
 const Post = require('../models/Posts');
 const User = require('../models/Users')
 
-router.get('/posts', (req, res) => {
-    return res.send('GET HTTP method on post resource');
+router.get('/', (req, res) => {
+    try {
+        const allPosts = await Post.find({});
+            res.json(allPosts)
+        } catch(err) {
+            res.send(err);
+        }
 });
 
 router.post('/posts', async (req, res) => {
