@@ -84,7 +84,7 @@ class App extends Component {
     try{
       const createdPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}`, {
         method: 'GET',
-        credentials: include,
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         }

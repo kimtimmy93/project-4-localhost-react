@@ -3,6 +3,7 @@ const router = express.Router();
 const Post = require('../models/Posts');
 const User = require('../models/Users')
 
+// index
 router.get('/', async (req, res) => {
     try {
         const allPosts = await Post.find({});
@@ -12,7 +13,16 @@ router.get('/', async (req, res) => {
         }
 });
 
-router.post('/:userId/posts', async (req, res) => {
+// show
+router.get('/:id', async(req, res) => {
+    try {
+        const foundUser = await foundUser.findOne(req.params.userId).populate('posts')
+    } catch(err){
+        console.log(err)
+    }
+})
+
+router.post('/:userId', async (req, res) => {
    const newPost = await Post.create(req.body)
    const findUser = await User.findById(req.params.userId)
    findUser.posts.push(newPost)
@@ -21,7 +31,7 @@ router.post('/:userId/posts', async (req, res) => {
    res.json(newPost)
 });
 
-router.put('/posts/:postId', async (req, res) => {
+router.put('/:postId', async (req, res) => {
     const updatedPost = await User.findByIdAndUpdate(req.params.postId, req.body, {new: true})
     res.json(updatedPost)
 });
