@@ -17,7 +17,7 @@ class PostContainer extends Component {
         const parsedPosts = await posts.json()
         console.log(parsedPosts)
         this.setState({
-            posts: parsedPosts.data
+            posts: parsedPosts.posts
         })
        } catch(err){
            console.log(err)
