@@ -9,7 +9,11 @@ const userSchema = new Schema({
     },
     email: String,
     password: String,
-    profilePic: String
+    profilePic: String,
+    posts: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Post'
+  }]
 });
 
 const User = mongoose.model('User', userSchema);

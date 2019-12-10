@@ -9,8 +9,13 @@ router.get('/users', (req, res) => {
 
 router.post('/users', async (req, res) => {
     try {
-        const createdUser = await User.create(req.body)
-        res.json(createdUser)
+        const existingUser = await User.findOne(req.body)
+        if(existingUser){
+            res.json(existingUser)
+        } else {
+            const createdUser = await User.create(req.body)
+            res.json(createdUser)
+        }
     } catch(err) {
         console.log(err)
     }

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom'
 
 import NavBar from './components/NavBar'
-import HostContainer from './components/HostContainer'
-import HostList from './components/HostList'
-import HostShow from './components/HostShow'
+import PostContainer from './components/PostContainer'
+import PostList from './components/PostList'
+import PostShow from './components/PostShow'
 import UserShow from './components/UserShow'
 import SignInWithGoogle from './components/SignInWithGoogle'
 import SignUpWithEmailPassword from './components/SignUpWithEmailPassword'
@@ -81,7 +81,7 @@ class App extends Component {
         ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
         : ''
         }
-        <HostContainer />
+        <PostContainer />
         <Switch>
           <Route exact path={ROUTES.HOME} render={() => <div>home</div>}  render={() => <MapContainer
           google={this.props.google}
@@ -93,7 +93,7 @@ class App extends Component {
           <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
-          <Route exact path={ROUTES.HOST} />
+          <Route exact path={ROUTES.POST} component={ PostShow } />
         </Switch>
       </div>
     )

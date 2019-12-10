@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Button } from 'react-bootstrap';
 
-class HostList extends Component {
+class PostList extends Component {
 render(){
     return(
         <Card style={{ width: '18rem' }}>
@@ -20,4 +20,4 @@ render(){
 }
 
 
-export default HostList
+export default PostList
