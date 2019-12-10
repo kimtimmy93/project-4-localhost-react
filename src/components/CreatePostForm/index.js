@@ -47,3 +47,6 @@ class CreatePost extends Component {
         )
     }
 }
+
+
+export default withRouter(CreatePost)
