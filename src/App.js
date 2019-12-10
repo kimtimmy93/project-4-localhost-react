@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch, Link, withRouter } from 'react-router-dom'
 
 import NavBar from './components/NavBar'
 import PostContainer from './components/PostContainer'
@@ -69,11 +69,42 @@ class App extends Component {
     })
    
   }
+  getPosts = async() => {
+    try {
+      const posts = await fetch(`${process.env.REACT_APP_API_URL}/posts`)
+      const parsedPosts = await posts.json()
+      this.setState({
+        postsCreated: parsedPosts.data
+      })
+    } catch(err){
+      console.log(err)
+    }
+  }
+  viewPost = async(id) => {
+    try{
+      const createdPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}`, {
+        method: 'GET',
+        credentials: include,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      const parsedCreatedPosts = await createdPosts.json();
+      console.log(parsedCreatedPosts, 'this is view post parsed')
+      this.setState({
+        post: parsedCreatedPosts.data
+      })
+    } catch(err){
+      console.log(err)
+    }
+    this.props.history.push(`/posts/${id}`)
+  }
   addPost = async (e, postFromForm) => {
     e.preventDefault();
     try {
-      const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts`, { 
+      const createdPostResponse = await fetch('http://localhost:8000/posts/5df00f0f443b56bd3b0fb1be/posts', { 
           method: 'POST',
+          credentials: 'include',
           body: JSON.stringify(postFromForm),
           headers: {
               'Content-Type': 'application/json'
@@ -112,4 +143,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
