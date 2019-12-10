@@ -11,7 +11,7 @@ class PostContainer extends Component {
         // fetch the hosts from backend
         // setstate
     }
-    getHosts = async () => {
+    getPosts = async () => {
        try {
         const posts = await fetch(`${process.env.REACT_APP_API_URL}/posts`)
         const parsedPosts = await posts.json()

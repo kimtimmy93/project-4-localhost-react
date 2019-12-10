@@ -7,19 +7,18 @@ const PORT = process.env.PORT || 8000
 require('./config/db')
 
 
-const User = require('./models/Users')
-const Host = require('./models/Hosts')
-const Post = require('./models/Posts')
+// const User = require('./models/Users')
+// const Post = require('./models/Posts')
 
 const userController = require('./controllers/users')
-const hostController = require('./controllers/hosts')
+const postController = require('./controllers/posts')
 
 // app.use(cors())
 app.use(express.static(path.join(__dirname, 'build')))
 app.use(express.json())
 
 app.use('/auth', userController)
-app.use('/hosts', hostController)
+app.use('/posts', postController)
 
 app.get('/api/v1/hello', (req, res) => {
     res.json({ message: 'world' })
