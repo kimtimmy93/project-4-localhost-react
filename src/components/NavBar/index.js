@@ -28,6 +28,11 @@ const NavBar = props => {
                 ?<Nav.Link href={ROUTES.SIGN_UP}>SIGNUP</Nav.Link>
                 : ''
             }
+            {
+                props.isLogged
+                ?<Nav.Link href={ROUTES.NEW}>CREATE NEW</Nav.Link>
+                : ''
+            }
           </Nav>
             {
                 props.isLogged

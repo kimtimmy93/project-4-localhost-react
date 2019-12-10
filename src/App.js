@@ -4,7 +4,7 @@ import { Route, Switch, Link } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import PostContainer from './components/PostContainer'
 import PostList from './components/PostList'
-import PostShow from './components/PostShow'
+// import PostShow from './components/PostShow'
 import UserShow from './components/UserShow'
 import SignInWithGoogle from './components/SignInWithGoogle'
 import SignUpWithEmailPassword from './components/SignUpWithEmailPassword'
@@ -27,6 +27,7 @@ class App extends Component {
     message: '',
     currentUser: null,
     isLogged: false,
+    postsCreated: []
   }
   async componentDidMount(){
     const message = await fetch('/api/v1/hello')
@@ -83,19 +84,15 @@ class App extends Component {
         : ''
         }
         {/* <PostContainer /> */}
-        <CreatePost />
         <Switch>
-          <Route exact path={ROUTES.HOME} render={() => <div>home</div>}  render={() => <MapContainer
-          google={this.props.google}
-          center={{lat: 34.052235, lng: -118.2437 }}
-          height='300px'
-          zoom={15}
-          />}/>
+          <Route exact path={ROUTES.HOME} render={() =>  <PostList />}  />
           <Route exact path={ROUTES.LOGIN} component={ Login } />
           <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
-          <Route exact path={ROUTES.POST} component={ PostShow } />
+          {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
+          <Route exact path={ROUTES.NEW} component={ CreatePost } />
+          <Route exact path={ROUTES.PROFILE} render={() => <UserShow /> } />
         </Switch>
       </div>
     )
