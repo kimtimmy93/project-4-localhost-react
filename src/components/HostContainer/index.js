@@ -25,9 +25,9 @@ class HostContainer extends Component {
     }
     render(){
         return(
-        <HostList 
-            hosts={this.state.hosts}
-        />
+        // <HostList 
+        //     hosts={this.state.hosts}
+        // />
         )
     }
 }
