@@ -4,9 +4,7 @@ const User = require('../models/Users')
 
 
 router.get('/users', (req, res) => {
-    User.find()
-        .then(users => res.json(users))
-        .catch(err => res.status(400).json('Error: ' + err))
+    return res.send('GET HTTP method on user resource');
 });
 
 router.post('/users', async (req, res) => {

@@ -29,82 +29,81 @@ constructor( props ){
 /**
   * Get the current address from the default map position and set those values in the state
   */
- componentDidMount() {
-  Geocode.fromLatLng( this.state.mapPosition.lat , this.state.mapPosition.lng ).then(
-   response => {
-    const address = response.results[0].formatted_address,
-     addressArray =  response.results[0].address_components,
-     city = this.getCity( addressArray ),
-     area = this.getArea( addressArray ),
-     state = this.getState( addressArray );
+//  componentDidMount() {
+//   Geocode.fromLatLng( this.state.mapPosition.lat , this.state.mapPosition.lng ).then(
+//    response => {
+//     const address = response.results[0].formatted_address,
+//      addressArray =  response.results[0].address_components,
+//     //  city = this.getCity( addressArray ),
+//     //  area = this.getArea( addressArray ),
+//     //  state = this.getState( addressArray );
   
-    console.log( 'city', city, area, state );
-  
-    this.setState( {
-     address: ( address ) ? address : '',
-     area: ( area ) ? area : '',
-     city: ( city ) ? city : '',
-     state: ( state ) ? state : '',
-    } )
-   },
-   error => {
-    console.error(error);
-   }
-  );
- };
 
- shouldComponentUpdate( nextProps, nextState ){
-  if (
-   this.state.markerPosition.lat !== this.props.center.lat ||
-   this.state.address !== nextState.address ||
-   this.state.city !== nextState.city ||
-   this.state.area !== nextState.area ||
-   this.state.state !== nextState.state
-  ) {
-   return true
-  } else if ( this.props.center.lat === nextProps.center.lat ){
-   return false
-  }
- }
+//     // this.setState( {
+//     //  address: ( address ) ? address : '',
+//     //  area: ( area ) ? area : '',
+//     //  city: ( city ) ? city : '',
+//     //  state: ( state ) ? state : '',
+//     // } )
+//    },
+//    error => {
+//     console.error(error);
+//    }
+//   );
+//  };
 
- getCity = ( addressArray ) => {
-  let city = '';
-  for( let i = 0; i < addressArray.length; i++ ) {
-   if ( addressArray[ i ].types[0] && 'administrative_area_level_2' === addressArray[ i ].types[0] ) {
-    city = addressArray[ i ].long_name;
-    return city;
-   }
-  }
- };
+//  shouldComponentUpdate( nextProps, nextState ){
+//   if (
+//    this.state.markerPosition.lat !== this.props.center.lat ||
+//    this.state.address !== nextState.address ||
+//    this.state.city !== nextState.city ||
+//    this.state.area !== nextState.area ||
+//    this.state.state !== nextState.state
+//   ) {
+//    return true
+//   } else if ( this.props.center.lat === nextProps.center.lat ){
+//    return false
+//   }
+//  }
 
- getArea = ( addressArray ) => {
-  let area = '';
-  for( let i = 0; i < addressArray.length; i++ ) {
-   if ( addressArray[ i ].types[0]  ) {
-    for ( let j = 0; j < addressArray[ i ].types.length; j++ ) {
-     if ( 'sublocality_level_1' === addressArray[ i ].types[j] || 'locality' === addressArray[ i ].types[j] ) {
-      area = addressArray[ i ].long_name;
-      return area;
-     }
-    }
-   }
-  }
- };
+//  getCity = ( addressArray ) => {
+//   let city = '';
+//   for( let i = 0; i < addressArray.length; i++ ) {
+//    if ( addressArray[ i ].types[0] && 'administrative_area_level_2' === addressArray[ i ].types[0] ) {
+//     city = addressArray[ i ].long_name;
+//     return city;
+//    }
+//   }
+//  };
 
- getState = ( addressArray ) => {
-  let state = '';
-  for( let i = 0; i < addressArray.length; i++ ) {
-   for( let i = 0; i < addressArray.length; i++ ) {
-    if ( addressArray[ i ].types[0] && 'administrative_area_level_1' === addressArray[ i ].types[0] ) {
-     state = addressArray[ i ].long_name;
-     return state;
-    }
-   }
-  }
- };
+//  getArea = ( addressArray ) => {
+//   let area = '';
+//   for( let i = 0; i < addressArray.length; i++ ) {
+//    if ( addressArray[ i ].types[0]  ) {
+//     for ( let j = 0; j < addressArray[ i ].types.length; j++ ) {
+//      if ( 'sublocality_level_1' === addressArray[ i ].types[j] || 'locality' === addressArray[ i ].types[j] ) {
+//       area = addressArray[ i ].long_name;
+//       return area;
+//      }
+//     }
+//    }
+//   }
+//  };
 
- onChange = ( event ) => {
-  this.setState({ [event.target.name]: event.target.value });
+//  getState = ( addressArray ) => {
+//   let state = '';
+//   for( let i = 0; i < addressArray.length; i++ ) {
+//    for( let i = 0; i < addressArray.length; i++ ) {
+//     if ( addressArray[ i ].types[0] && 'administrative_area_level_1' === addressArray[ i ].types[0] ) {
+//      state = addressArray[ i ].long_name;
+//      return state;
+//     }
+//    }
+//   }
+//  };
+
+ onChange = ( e ) => {
+  this.setState({ [e.target.name]: e.target.value });
  };
 
  onMarkerDragEnd = ( event ) => {
@@ -134,21 +133,21 @@ constructor( props ){
    onPlaceSelected = ( place ) => {
     const address = place.formatted_address,
        addressArray =  place.address_components,
-       city = this.getCity( addressArray ),
-       area = this.getArea( addressArray ),
-       state = this.getState( addressArray ),
+    //    city = this.getCity( addressArray ),
+    //    area = this.getArea( addressArray ),
+    //    state = this.getState( addressArray ),
        latValue = place.geometry.location.lat(),
        lngValue = place.geometry.location.lng();
     // Set these values in the state.
       this.setState({
-       address: ( address ) ? address : '',
-       area: ( area ) ? area : '',
-       city: ( city ) ? city : '',
-       state: ( state ) ? state : '',
-       markerPosition: {
-        lat: latValue,
-        lng: lngValue
-       },
+    //    address: ( address ) ? address : '',
+    //    area: ( area ) ? area : '',
+    //    city: ( city ) ? city : '',
+    //    state: ( state ) ? state : '',
+    //    markerPosition: {
+    //     lat: latValue,
+    //     lng: lngValue
+    //    },
        mapPosition: {
         lat: latValue,
         lng: lngValue
@@ -201,10 +200,10 @@ let map;
        <label htmlFor="">State</label>
        <input type="text" name="state" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.state }/>
       </div> */}
-      <div className="form-group">
+      {/* <div className="form-group">
        <label htmlFor="">Address</label>
        <input type="text" name="address" className="form-control" onChange={ this.onChange } readOnly="readOnly" value={ this.state.address }/>
-      </div>
+      </div> */}
      </div>
     
      <AsyncMap

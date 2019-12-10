@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom'
 
 import NavBar from './components/NavBar'
+import HostContainer from './components/HostContainer'
 import HostList from './components/HostList'
 import HostShow from './components/HostShow'
 import UserShow from './components/UserShow'
@@ -80,6 +81,7 @@ class App extends Component {
         ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
         : ''
         }
+        <HostContainer />
         <Switch>
           <Route exact path={ROUTES.HOME} render={() => <div>home</div>}  render={() => <MapContainer
           google={this.props.google}
@@ -96,6 +98,6 @@ class App extends Component {
       </div>
     )
   }
-  }
+}
 
 export default App;
