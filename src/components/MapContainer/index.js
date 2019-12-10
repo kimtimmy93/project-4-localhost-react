@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
+import { withGoogleMap, GoogleMap, withScriptjs, Marker } from "react-google-maps";
 import { Route, Switch, withRouter } from 'react-router-dom';
 import Autocomplete from 'react-google-autocomplete'
 import Geocode from "react-geocode";
@@ -26,82 +26,6 @@ constructor( props ){
 }
   }
  }
-/**
-  * Get the current address from the default map position and set those values in the state
-  */
-//  componentDidMount() {
-//   Geocode.fromLatLng( this.state.mapPosition.lat , this.state.mapPosition.lng ).then(
-//    response => {
-//     const address = response.results[0].formatted_address,
-//      addressArray =  response.results[0].address_components,
-//     //  city = this.getCity( addressArray ),
-//     //  area = this.getArea( addressArray ),
-//     //  state = this.getState( addressArray );
-  
-
-//     // this.setState( {
-//     //  address: ( address ) ? address : '',
-//     //  area: ( area ) ? area : '',
-//     //  city: ( city ) ? city : '',
-//     //  state: ( state ) ? state : '',
-//     // } )
-//    },
-//    error => {
-//     console.error(error);
-//    }
-//   );
-//  };
-
-//  shouldComponentUpdate( nextProps, nextState ){
-//   if (
-//    this.state.markerPosition.lat !== this.props.center.lat ||
-//    this.state.address !== nextState.address ||
-//    this.state.city !== nextState.city ||
-//    this.state.area !== nextState.area ||
-//    this.state.state !== nextState.state
-//   ) {
-//    return true
-//   } else if ( this.props.center.lat === nextProps.center.lat ){
-//    return false
-//   }
-//  }
-
-//  getCity = ( addressArray ) => {
-//   let city = '';
-//   for( let i = 0; i < addressArray.length; i++ ) {
-//    if ( addressArray[ i ].types[0] && 'administrative_area_level_2' === addressArray[ i ].types[0] ) {
-//     city = addressArray[ i ].long_name;
-//     return city;
-//    }
-//   }
-//  };
-
-//  getArea = ( addressArray ) => {
-//   let area = '';
-//   for( let i = 0; i < addressArray.length; i++ ) {
-//    if ( addressArray[ i ].types[0]  ) {
-//     for ( let j = 0; j < addressArray[ i ].types.length; j++ ) {
-//      if ( 'sublocality_level_1' === addressArray[ i ].types[j] || 'locality' === addressArray[ i ].types[j] ) {
-//       area = addressArray[ i ].long_name;
-//       return area;
-//      }
-//     }
-//    }
-//   }
-//  };
-
-//  getState = ( addressArray ) => {
-//   let state = '';
-//   for( let i = 0; i < addressArray.length; i++ ) {
-//    for( let i = 0; i < addressArray.length; i++ ) {
-//     if ( addressArray[ i ].types[0] && 'administrative_area_level_1' === addressArray[ i ].types[0] ) {
-//      state = addressArray[ i ].long_name;
-//      return state;
-//     }
-//    }
-//   }
-//  };
-
  onChange = ( e ) => {
   this.setState({ [e.target.name]: e.target.value });
  };

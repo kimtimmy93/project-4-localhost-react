@@ -99,7 +99,7 @@ class App extends Component {
         }
         {/* <PostContainer /> */}
         <Switch>
-          <Route exact path={ROUTES.HOME} render={() =>  <PostList />}  />
+          <Route exact path={ROUTES.HOME} render={() =>  <PostList postsCreated={this.state.postsCreated} />}  />
           <Route exact path={ROUTES.LOGIN} component={ Login } />
           <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
           <Route exact path ={ROUTES.LOGOUT} />

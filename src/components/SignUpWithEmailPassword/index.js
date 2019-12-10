@@ -20,6 +20,12 @@ class SignUpWithEmailPassWord extends Component {
         doCreateUserWithEmailAndPassword(email, password)
             .then(authUser => {
                 // REDIRECT
+                console.log(authUser)
+                const newUser = {
+                    email: authUser.user.email,
+                    password: this.state.password
+                }
+                console.log(newUser)
                 this.props.history.push(ROUTES.HOME)
             })
             .catch(error => {
