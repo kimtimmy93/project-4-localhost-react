@@ -3,7 +3,7 @@ const router = express.Router();
 const Post = require('../models/Posts');
 const User = require('../models/Users')
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const allPosts = await Post.find({});
             res.json(allPosts)
@@ -12,8 +12,12 @@ router.get('/', (req, res) => {
         }
 });
 
-router.post('/posts', async (req, res) => {
-   const newPost = await User.findById(req.params.postId, req.body, {new: true})
+router.post('/:userId/posts', async (req, res) => {
+   const newPost = await Post.create(req.body)
+   const findUser = await User.findById(req.params.userId)
+   findUser.posts.push(newPost)
+   await findUser.save()
+
    res.json(newPost)
 });
 
@@ -29,6 +33,5 @@ router.delete('/posts/:postId', (req, res) => {
 });
 
 
-module.exports = router
-
+module.exports = router;
 

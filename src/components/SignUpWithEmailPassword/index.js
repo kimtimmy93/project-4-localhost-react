@@ -25,7 +25,7 @@ class SignUpWithEmailPassWord extends Component {
                     email: authUser.user.email,
                     password: this.state.password
                 }
-                console.log(newUser)
+                
                 this.props.history.push(ROUTES.HOME)
             })
             .catch(error => {

@@ -10,11 +10,14 @@ router.get('/:id/profile', async(req, res) => {
     
 });
 
-router.get('/users', (req, res) => {
-    return res.send('GET HTTP method on user resource');
+router.get('/users', async (req, res) => {
+    const getUsers = await User.find({})
+    console.log('hit the user route', getUsers)
+    res.json(getUsers)
 });
 
 router.post('/users', async (req, res) => {
+    console.log('hit the create user route')
     try {
             const createdUser = await User.create(req.body)
             res.json(createdUser)

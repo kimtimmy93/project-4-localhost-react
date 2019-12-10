@@ -11,9 +11,10 @@ class SignInGoogleBase extends Component {
                 displayName: socialAuthUser.user.displayName,
                 email: socialAuthUser.user.email
             }
-            const createdUser = await fetch('/auth/users', {
+            const createdUser = await fetch(`${process.env.REACT_APP_API_URL}/auth/users`, {
                 method: 'POST',
-                body: JSON.stringify(user),
+                credentials: 'include',
+                body: JSON.stringify(createdUser),
                 headers: {
                     'Content-Type': 'application/json'
                 }

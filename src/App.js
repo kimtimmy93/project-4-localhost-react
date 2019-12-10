@@ -47,7 +47,6 @@ class App extends Component {
         })
         console.log(this.state.isLogged, '<---auth')
     })
-  
   }
   addProfilePicture = event => {
     doAddFile(event.target.files[0])
@@ -73,7 +72,7 @@ class App extends Component {
   addPost = async (e, postFromForm) => {
     e.preventDefault();
     try {
-      const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/`, { 
+      const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts`, { 
           method: 'POST',
           body: JSON.stringify(postFromForm),
           headers: {
