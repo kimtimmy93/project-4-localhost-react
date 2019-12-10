@@ -72,7 +72,7 @@ class App extends Component {
    
   }
   render(){
-    const { currentUser } = this.state
+    // const { currentUser } = this.state
     return (
       <div>
         <NavBar isLogged = {this.state.isLogged} currentUser={this.state.currentUser}/>

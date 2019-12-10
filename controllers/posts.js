@@ -8,7 +8,8 @@ router.get('/posts', (req, res) => {
 });
 
 router.post('/posts', async (req, res) => {
-   
+   const newPost = await User.findById(req.params.postId, req.body, {new: true})
+   res.json(newPost)
 });
 
 router.put('/posts/:postId', async (req, res) => {
