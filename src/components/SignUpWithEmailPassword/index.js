@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { doCreateUserWithEmailAndPassword } from '../../firebase/firebase'
+import { withRouter } from 'react-router-dom'
 
 import * as ROUTES from '../../constants/routes'
 
@@ -22,20 +23,21 @@ class SignUpWithEmailPassWord extends Component {
                 // REDIRECT
                 const newUser = {
                     email: authUser.user.email,
-                    password: this.state.password
+                    password: this.state.password,
+                    _id: authUser.user.uid
                 }
                 console.log(authUser)
                 const hitPost = await fetch(`${process.env.REACT_APP_API_URL}/auth/users`, {
                     method: "POST",
                     credentials: 'include',
                     body: JSON.stringify(newUser),
-                    header: { 
+                    headers: { 
                         "Content-Type": "application/json"
                     }
                 })
                 const hitPostJson = await hitPost.json()
                 this.props.doSetCurrentUser(hitPostJson)
-                // this.props.history.push(ROUTES.HOME)
+                this.props.history.push(ROUTES.HOME)
             })
             .catch(error => {
                 this.setState({ error })
