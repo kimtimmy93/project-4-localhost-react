@@ -1,4 +1,16 @@
 .map{
-    margin-top: 500px;
-    margin-left: 150px;
+    margin-top: 20px;
+    margin-left: 170px;
+
+    
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+
 }

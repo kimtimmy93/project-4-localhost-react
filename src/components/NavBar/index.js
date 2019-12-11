@@ -9,13 +9,13 @@ import { doSignOut } from '../../firebase/firebase'
 import { Navbar, Nav, Form, Button, FormControl } from 'react-bootstrap'
 
 import * as ROUTES from '../../constants/routes'
-
+import './style.css'
 const NavBar = props => {
     return(
         <div>
         <>
         <Navbar bg="light" variant="light">
-          <Navbar.Brand href={ROUTES.HOME}>Local:Host</Navbar.Brand>
+          <Navbar.Brand href={ROUTES.HOME} className="localhost">Local:Host</Navbar.Brand>
           <Nav className="mr-auto">
           <Nav.Link href={ROUTES.HOME}>HOME</Nav.Link>
             {
