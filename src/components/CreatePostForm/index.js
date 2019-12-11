@@ -14,7 +14,7 @@ class CreatePost extends Component {
     render(){
         console.log(this.props.id, "THIS IS ON THE CREATE COMPONENT")
         return(
-            <Form onSubmit={(e) => this.props.addPost(e, this.state)}>
+            <Form onSubmit={(e) => this.props.addPost(e, this.state, this.props.id)}>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Address</Form.Label>
                      <Form.Control type="text" name="address" placeholder="1234 abc street, Los Angeles, CA 00000" value={this.state.address} onChange={this.handleChange} />

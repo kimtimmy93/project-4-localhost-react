@@ -25,14 +25,14 @@ class App extends Component {
     currentUser: null,
     isLogged: false,
     postsCreated: [],
-    // fiebaseId: ''
+    id: ''
   }
   async componentDidMount(){
-    // const message = await fetch('/api/v1/hello')
-    // const messageJson = await message.json()
-    // this.setState({
-    //   message: messageJson.message
-    // })
+    const message = await fetch('/api/v1/hello')
+    const messageJson = await message.json()
+    this.setState({
+      message: messageJson.message
+    })
     auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState({
@@ -40,7 +40,7 @@ class App extends Component {
             displayName: authUser.email
           },
           isLogged: true,
-          // id: authUser.uid
+          id: authUser.uid
         })
         : this.setState({
           currentUser: null,
@@ -84,7 +84,7 @@ class App extends Component {
   }
   viewPost = async() => {
     try{
-      const createdPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.currentUser._id}`, {
+      const createdPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -99,12 +99,12 @@ class App extends Component {
     } catch(err){
       console.log(err)
     }
-    this.props.history.push(`/posts/${this.state.currentUser._id}`)
+    this.props.history.push(`/posts/${this.state.id}`)
   }
   addPost = async (e, postFromForm) => {
     e.preventDefault();
     try {
-      const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.currentUser._id}`, { 
+      const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`, { 
           method: 'POST',
           body: JSON.stringify(postFromForm),
           headers: {
@@ -137,7 +137,7 @@ class App extends Component {
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
-          <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} /> } />
+          <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} id={this.state.id} /> } />
           <Route exact path={ROUTES.PROFILE} render={() => <UserShow /> } />
         </Switch>
       </div>
