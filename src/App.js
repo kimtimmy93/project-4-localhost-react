@@ -4,6 +4,7 @@ import { Route, Switch, Link, withRouter } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import PostContainer from './components/PostContainer'
 import PostList from './components/PostList'
+import MainArea from './MainArea'
 // import PostShow from './components/PostShow'
 import UserShow from './components/UserShow'
 import SignInWithGoogle from './components/SignInWithGoogle'
@@ -21,7 +22,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const My404 = () => {
   return (
     <div>
-      You are lost lil buddy : /
+      You are lost
     </div>
     )
 };
@@ -36,11 +37,11 @@ class App extends Component {
   }
   async componentDidMount(){
     this.getPosts()
-    const message = await fetch('/api/v1/hello')
-    const messageJson = await message.json()
-    this.setState({
-      message: messageJson.message
-    })
+    // const message = await fetch('/api/v1/hello')
+    // const messageJson = await message.json()
+    // this.setState({
+    //   message: messageJson.message
+    // })
     auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState({
@@ -137,14 +138,15 @@ class App extends Component {
        
         {/* <PostContainer /> */}
         <Switch>
-          <Route exact path={ROUTES.HOME} render={() =>  <PostList postsCreated={this.state.postsCreated} />} />
+          <Route exact path={ROUTES.HOME} render={() =>  
+          <PostList postsCreated={this.state.postsCreated} />} />
           <Route exact path={ROUTES.LOGIN} component={ Login } />
           <Route exact path={ROUTES.SIGN_UP} render={()=> <SignUpWithEmailPassword doSetCurrentUser={this.doSetCurrentUser}/>}/>
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
           <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture}/> } />
-          <Route exact path={ROUTES.PROFILE} render={() => <UserShow /> } />
+          <Route exact path={ROUTES.PROFILE} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} />} />
 
           <Route component={My404} />
         </Switch>
