@@ -16,7 +16,7 @@ render(){
             {
             this.props.postsCreated.map((e, i) =>
             <div>
-            <Card.Img variant="top" src={e.image} />
+            <Card.Img variant="top" src={e.homePics} />
                 <Card.Body>
                     <Card.Title>{e.title}</Card.Title>
                     <Card.Text>

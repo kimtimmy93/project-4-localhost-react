@@ -6,8 +6,7 @@ const postSchema = new Schema({
     coordinates: Number,
     homePics: String,
     info: String,
-    _id: String
-}, {_id: false});
+});
 
 const Post = mongoose.model('Post', postSchema);
 module.exports = Post;

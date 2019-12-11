@@ -60,9 +60,9 @@ class App extends Component {
     doAddFile(event.target.files[0])
       .then(file => file.ref.getDownloadURL())
       .then(async url => {
-        const updatedUser = await fetch(`auth/users/${this.state.currentUser._id}`, {
+        const updatedUser = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`, {
           method: 'PUT',
-          body: JSON.stringify({profilePic: url}),
+          body: JSON.stringify({homePics: url}),
           headers: {
             'Content-type': 'application/json'
           }
@@ -143,7 +143,7 @@ class App extends Component {
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
-          <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} id={this.state.id} /> } />
+          <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture}/> } />
           <Route exact path={ROUTES.PROFILE} render={() => <UserShow /> } />
 
           <Route component={My404} />
