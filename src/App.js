@@ -18,12 +18,19 @@ import { firebase, doAddFile, auth } from '../src/firebase/firebase'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+const My404 = () => {
+  return (
+    <div>
+      You are lost lil buddy : /
+    </div>
+    )
+};
 class App extends Component {
   state = {
     // message: '',
     currentUser: null,
     isLogged: false,
+    post: {},
     postsCreated: [],
     id: ''
   }
@@ -46,14 +53,13 @@ class App extends Component {
           currentUser: null,
           isLogged: false
         })
-        console.log(this.state.isLogged, '<---auth')
     })
+    this.getPosts()
   }
   addProfilePicture = event => {
     doAddFile(event.target.files[0])
       .then(file => file.ref.getDownloadURL())
       .then(async url => {
-        console.log(this.state.currentUser, '<----currentuser')
         const updatedUser = await fetch(`auth/users/${this.state.currentUser._id}`, {
           method: 'PUT',
           body: JSON.stringify({profilePic: url}),
@@ -69,12 +75,12 @@ class App extends Component {
     this.setState({
       currentUser
     })
-   
   }
-  getPosts = async() => {
+  getPosts = async () => {
     try {
-      const posts = await fetch(`${process.env.REACT_APP_API_URL}/posts`)
+      const posts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`)
       const parsedPosts = await posts.json()
+      console.log(parsedPosts, '<----parsedPost')
       this.setState({
         postsCreated: parsedPosts.data
       })

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PostList from '../PostList';
+import CreatePost from '../CreatePostForm'
 
 
 class PostContainer extends Component {
@@ -8,21 +9,20 @@ class PostContainer extends Component {
     }
     componentDidMount(){
      this.getPosts();
-        // fetch the hosts from backend
-        // setstate
     }
-    getPosts = async () => {
-       try {
-        const posts = await fetch(`${process.env.REACT_APP_API_URL}/posts`)
-        const parsedPosts = await posts.json()
-        console.log(parsedPosts)
-        this.setState({
-            posts: parsedPosts.posts
-        })
-       } catch(err){
-           console.log(err)
-       }
+    getPosts = async() => {
+        try {
+            const posts = await fetch(`${process.env.REACT_APP_API_URL}/posts`)
+            const parsedPosts = await posts.json();
+            this.setState({
+                posts: parsedPosts.data
+            })
+        } catch(err){
+            console.log(err)
+        }
     }
+    
+    
     render(){
         return(
         <PostList 
