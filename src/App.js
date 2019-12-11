@@ -35,6 +35,7 @@ class App extends Component {
     id: ''
   }
   async componentDidMount(){
+    this.getPosts()
     const message = await fetch('/api/v1/hello')
     const messageJson = await message.json()
     this.setState({
@@ -54,7 +55,6 @@ class App extends Component {
           isLogged: false
         })
     })
-    this.getPosts()
   }
   addProfilePicture = event => {
     doAddFile(event.target.files[0])
@@ -82,7 +82,7 @@ class App extends Component {
       const parsedPosts = await posts.json()
       console.log(parsedPosts, '<----parsedPost')
       this.setState({
-        postsCreated: parsedPosts.data
+        postsCreated: parsedPosts
       })
     } catch(err){
       console.log(err)
@@ -137,7 +137,7 @@ class App extends Component {
        
         {/* <PostContainer /> */}
         <Switch>
-          <Route exact path={ROUTES.HOME} render={() =>  <PostList postsCreated={this.state.postsCreated} />}  />
+          <Route exact path={ROUTES.HOME} render={() =>  <PostList postsCreated={this.state.postsCreated} />} />
           <Route exact path={ROUTES.LOGIN} component={ Login } />
           <Route exact path={ROUTES.SIGN_UP} render={()=> <SignUpWithEmailPassword doSetCurrentUser={this.doSetCurrentUser}/>}/>
           <Route exact path ={ROUTES.LOGOUT} />
@@ -145,6 +145,8 @@ class App extends Component {
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
           <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} id={this.state.id} /> } />
           <Route exact path={ROUTES.PROFILE} render={() => <UserShow /> } />
+
+          <Route component={My404} />
         </Switch>
       </div>
     )

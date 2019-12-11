@@ -6,10 +6,10 @@ import CreatePost from '../CreatePostForm'
 import * as ROUTES from '../../constants/routes'
 
 class PostList extends Component {
-    state = {
-        title: '',
-        info: ''
-    }
+    // state = {
+    //     title: '',
+    //     info: ''
+    // }
 render(){
     return(
         
