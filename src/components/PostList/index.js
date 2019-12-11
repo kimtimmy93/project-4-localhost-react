@@ -18,7 +18,7 @@ render(){
                 <Card.Body>
                     <Card.Title>{e.title}</Card.Title>
                     <Card.Text>
-                        {e.info}
+                        {e.area}
                     </Card.Text>
                     <Button variant="primary" href={ROUTES.POST}>Go</Button>
                 </Card.Body>

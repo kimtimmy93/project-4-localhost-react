@@ -146,7 +146,7 @@ class App extends Component {
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
           <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture}/> } />
-          <Route exact path={ROUTES.PROFILE} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} />} />
+          <Route exact path={ROUTES.PROFILE} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} postsCreated={this.state.postsCreated} />} />
 
           <Route component={My404} />
         </Switch>

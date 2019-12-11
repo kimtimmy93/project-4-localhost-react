@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import MapContainer from '../MapContainer'
+import {Marker} from 'google-maps-react'
+import './style.css'
+
 
 class UserShow extends Component {
     state = {
@@ -15,13 +18,14 @@ class UserShow extends Component {
     }
     render(){
         return(
-        
+        <div className="map">
         <MapContainer
             google={this.props.google}
             center={{lat: this.props.lat, lng: this.props.long }}
             height='300px'
             zoom={15}
         />
+        </div>
         )
     }
 }

@@ -5,6 +5,7 @@ import { Form, Button, FormControl } from 'react-bootstrap'
 class CreatePost extends Component {
     state = {
         title: '',
+        area: '',
         lat: '',
         long: '',
         homePics: '',
@@ -20,6 +21,10 @@ class CreatePost extends Component {
                  <Form.Group controlId="exampleForm.ControlInput">
                     <Form.Label>Title</Form.Label>
                      <Form.Control type="text" name="title" placeholder="Enter a title" value={this.state.title} onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group controlId="exampleForm.ControlInput0">
+                    <Form.Label>Area</Form.Label>
+                     <Form.Control type="text" name="area" placeholder="Enter a city and country" value={this.state.area} onChange={this.handleChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Latitude:</Form.Label>
