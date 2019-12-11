@@ -20,7 +20,7 @@ render(){
                     <Card.Text>
                         {e.area}
                     </Card.Text>
-                    <Button variant="primary" href={ROUTES.POST}>Go</Button>
+            <Button variant="primary" href={ROUTES.PROFILE}>Go to {e.area}</Button>
                 </Card.Body>
             </div>
                 )

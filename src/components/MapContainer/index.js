@@ -12,14 +12,14 @@ class MapContainer extends Component {
         <div>
             <Map
               google={this.props.google}
-              zoom={8}
+              zoom={10}
               style={mapStyles}
-              initialCenter={{lat: this.props.state.lat, lng: this.props.state.long}}
+              initialCenter={{lat: 34.0500, lng: -118.2500}}
             >
                {
                   this.props.postsCreated.map(p => 
                      <Marker
-                        icon={{url: '../lh.png', scaledSize: {height: 20, width: 20}}}
+                        icon={{url: '../lh.png', scaledSize: {height: 40, width: 40}}}
                         position={{lat: p.lat, lng: p.long}}
                      />
                   )
