@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Card, Button } from 'react-bootstrap';
-import CreatePost from '../CreatePostForm'
+import { Card, Button, Row, Col } from 'react-bootstrap';
+import './style.css'
+
 
 import * as ROUTES from '../../constants/routes'
 
 class PostList extends Component {
-    // state = {
-    //     title: '',
-    //     info: ''
-    // }
 render(){
     return(
-        <Card style={{ width: '18rem' }}>
+   <div className='container-fluid d-flex justify-content-center'>
+       <div className='row'>
+           <div className="col-md-4">
+           <Card style={{ width: '18rem' }}>
             {
             this.props.postsCreated.map((e, i) =>
-            <div>
-            <Card.Img variant="top" src={e.homePics} />
+            <div key={i}>
+            <Card.Img variant="top" src={e.homePics} className='card-img-top'/>
                 <Card.Body>
                     <Card.Title>{e.title}</Card.Title>
                     <Card.Text>
@@ -27,7 +27,12 @@ render(){
             </div>
                 )
             }
-        </Card> 
+        </Card>
+           </div>
+       </div>
+   </div>
+        
+    
         )
     
     }
