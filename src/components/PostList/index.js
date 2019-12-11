@@ -12,7 +12,6 @@ class PostList extends Component {
     // }
 render(){
     return(
-        
         <Card style={{ width: '18rem' }}>
             {
             this.props.postsCreated.map((e, i) =>

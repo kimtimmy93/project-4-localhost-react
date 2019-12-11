@@ -21,7 +21,7 @@ class CreatePost extends Component {
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Upload Your Picture</Form.Label>
-                    <Form.Control type='file' onChange={this.props.addProfilePicture} accept='image/*' />
+                    <Form.Control type='file' name ="homePics" onChange={this.props.addProfilePicture} accept='image/*' />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Add a description of your home</Form.Label>

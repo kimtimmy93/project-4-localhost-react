@@ -5,16 +5,16 @@ class UserShow extends Component {
     state = {
         user: {}
     }
-    async componentDidMount(){
-        const userId = this.props.match.params.id
-        console.log(userId)
-        const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/users/${userId}`)
-        console.log(reqUser, '<----reqUser')
-        const parsedUser = await reqUser.json()
-        this.setState({
-            user: parsedUser.data 
-        })
-    }
+    // async componentDidMount(){
+    //     const userId = this.props.match.params.id
+    //     console.log(userId)
+    //     const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/users/${userId}`)
+    //     console.log(reqUser, '<----reqUser')
+    //     const parsedUser = await reqUser.json()
+    //     this.setState({
+    //         user: parsedUser
+    //     })
+    // }
     render(){
         return(
         <MapContainer
