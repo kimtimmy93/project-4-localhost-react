@@ -18,15 +18,24 @@ class SignUpWithEmailPassWord extends Component {
         e.preventDefault()
         const { email, password } = this.state
         doCreateUserWithEmailAndPassword(email, password)
-            .then(authUser => {
+            .then(async authUser => {
                 // REDIRECT
-                console.log(authUser)
                 const newUser = {
                     email: authUser.user.email,
                     password: this.state.password
                 }
-                
-                this.props.history.push(ROUTES.HOME)
+                console.log(authUser)
+                const hitPost = await fetch(`${process.env.REACT_APP_API_URL}/auth/users`, {
+                    method: "POST",
+                    credentials: 'include',
+                    body: JSON.stringify(newUser),
+                    header: { 
+                        "Content-Type": "application/json"
+                    }
+                })
+                const hitPostJson = await hitPost.json()
+                this.props.doSetCurrentUser(hitPostJson)
+                // this.props.history.push(ROUTES.HOME)
             })
             .catch(error => {
                 this.setState({ error })

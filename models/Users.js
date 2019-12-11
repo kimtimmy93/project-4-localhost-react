@@ -6,6 +6,7 @@ const userSchema = new Schema({
     displayName: String,
     password: String,
     profilePic: String,
+    // firebaseId: String,
     posts: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Post'

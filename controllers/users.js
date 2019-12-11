@@ -19,9 +19,9 @@ router.get('/users', async (req, res) => {
 router.post('/users', async (req, res) => {
     console.log('hit the create user route')
     try {
-            const createdUser = await User.create(req.body)
-            res.json(createdUser)
-            console.log(createdUser)
+        const createdUser = await User.create(req.body)
+        res.json(createdUser)
+        console.log(createdUser, "NEW Users")
         
     } catch(err) {
         console.log(err)

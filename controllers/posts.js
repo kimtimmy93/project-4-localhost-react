@@ -16,19 +16,27 @@ router.get('/', async (req, res) => {
 // show
 router.get('/:id', async(req, res) => {
     try {
-        const foundUser = await foundUser.findOne(req.params.userId).populate('posts')
+        const foundUser = await foundUser.findOne({'posts': req.params.id}).populate('posts')
     } catch(err){
         console.log(err)
     }
-})
+});
 
 router.post('/:userId', async (req, res) => {
-   const newPost = await Post.create(req.body)
-   const findUser = await User.findById(req.params.userId)
-   findUser.posts.push(newPost)
-   await findUser.save()
+    console.log(req.params.userId)
+    try {
+        const findUser = await User.findById(req.params.userId)
+        console.log(findUser, "this is the user")
+        const newPost = await Post.create(req.body)
+        console.log(newPost, "this is the response")
+        findUser.posts.push(newPost)
+        await findUser.save()
+        res.json(newPost)
+    } catch(err){
+        console.log(err)
+    }
 
-   res.json(newPost)
+   
 });
 
 router.put('/:postId', async (req, res) => {

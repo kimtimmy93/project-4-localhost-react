@@ -6,11 +6,17 @@ import CreatePost from '../CreatePostForm'
 import * as ROUTES from '../../constants/routes'
 
 class PostList extends Component {
+    state = {
+        title: '',
+        info: ''
+    }
 render(){
     return(
-        this.props.postsCreated.map((e, i) =>
-        <div>
+        
         <Card style={{ width: '18rem' }}>
+            {
+            this.props.postsCreated.map((e, i) =>
+            <div>
             <Card.Img variant="top" src={e.image} />
                 <Card.Body>
                     <Card.Title>{e.title}</Card.Title>
@@ -19,11 +25,12 @@ render(){
                     </Card.Text>
                     <Button variant="primary" href={ROUTES.POST}>Go somewhere</Button>
                 </Card.Body>
-        </Card>
-        </div>
-       
-            )
+            </div>
+                )
+            }
+        </Card> 
         )
+    
     }
 }
 

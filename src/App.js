@@ -21,29 +21,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   state = {
-    message: '',
+    // message: '',
     currentUser: null,
     isLogged: false,
-    postsCreated: []
+    postsCreated: [],
+    // fiebaseId: ''
   }
   async componentDidMount(){
-    const message = await fetch('/api/v1/hello')
-    const messageJson = await message.json()
-    this.setState({
-      message: messageJson.message
-    })
+    // const message = await fetch('/api/v1/hello')
+    // const messageJson = await message.json()
+    // this.setState({
+    //   message: messageJson.message
+    // })
     auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState({
           currentUser: {
             displayName: authUser.email
           },
-          isLogged: true
+          isLogged: true,
+          // id: authUser.uid
         })
         : this.setState({
           currentUser: null,
           isLogged: false
-
         })
         console.log(this.state.isLogged, '<---auth')
     })
@@ -52,9 +53,10 @@ class App extends Component {
     doAddFile(event.target.files[0])
       .then(file => file.ref.getDownloadURL())
       .then(async url => {
+        console.log(this.state.currentUser, '<----currentuser')
         const updatedUser = await fetch(`auth/users/${this.state.currentUser._id}`, {
           method: 'PUT',
-          body: JSON.stringify({imgURL: url}),
+          body: JSON.stringify({profilePic: url}),
           headers: {
             'Content-type': 'application/json'
           }
@@ -80,9 +82,9 @@ class App extends Component {
       console.log(err)
     }
   }
-  viewPost = async(id) => {
+  viewPost = async() => {
     try{
-      const createdPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${id}`, {
+      const createdPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.currentUser._id}`, {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -97,14 +99,13 @@ class App extends Component {
     } catch(err){
       console.log(err)
     }
-    this.props.history.push(`/posts/${id}`)
+    this.props.history.push(`/posts/${this.state.currentUser._id}`)
   }
   addPost = async (e, postFromForm) => {
     e.preventDefault();
     try {
-      const createdPostResponse = await fetch('http://localhost:8000/posts/5df00f0f443b56bd3b0fb1be/posts', { 
+      const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.currentUser._id}`, { 
           method: 'POST',
-          credentials: 'include',
           body: JSON.stringify(postFromForm),
           headers: {
               'Content-Type': 'application/json'
@@ -127,11 +128,12 @@ class App extends Component {
         ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
         : ''
         }
+       
         {/* <PostContainer /> */}
         <Switch>
           <Route exact path={ROUTES.HOME} render={() =>  <PostList postsCreated={this.state.postsCreated} />}  />
           <Route exact path={ROUTES.LOGIN} component={ Login } />
-          <Route exact path={ROUTES.SIGN_UP} component={ SignUpWithEmailPassword }/>
+          <Route exact path={ROUTES.SIGN_UP} render={()=> <SignUpWithEmailPassword doSetCurrentUser={this.doSetCurrentUser}/>}/>
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
