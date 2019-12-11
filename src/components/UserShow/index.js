@@ -10,13 +10,34 @@ class UserShow extends Component {
         user: {}
     }
     async componentDidMount(){
-        const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/users/${this.props.id}`)
+        console.log(this.props.state.id, 'userShow IDDDD')
+        const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/users/${this.props.state.id}`)
         console.log(reqUser, '<----reqUser')
         const parsedUser = await reqUser.json()
         this.setState({
             user: parsedUser
         })
     }
+    //   viewUser = async () => {
+    //     console.log('view event')
+    //     try {
+    //       const createdUsers = await fetch(`${process.env.REACT_APP_API_URL}/users/${this.props.id}`,{
+    //         method: 'GET',
+    //         credentials: 'include',
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         }
+    //       })
+    //       const parsedCreatedUsers = await createdUsers.json();
+    //       console.log(parsedCreatedUsers, 'this is view usersparsed')
+    //       this.setState({
+    //         user: parsedCreatedUser
+    //       })
+    //     } catch(err){
+    //       console.log(err);
+    //     }
+    //     this.props.history.push(`/users/${this.props.id}`)
+    //   }
     render(){
         return(
         <div>
@@ -41,10 +62,12 @@ class UserShow extends Component {
     <Switch>
         <div className="map">
             <MapContainer
-            google={this.props.google}
-            center={{lat: this.props.lat, lng: this.props.long }}
-            height='300px'
-            zoom={15}
+            state={this.props.state}
+            postsCreated={this.props.postsCreated}
+            // google={this.props.google}
+            // // center={{lat: this.props.lat, lng: this.props.long }}
+            // height='300px'
+            // zoom={15}
             />
         </div>
     </Switch>

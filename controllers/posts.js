@@ -23,7 +23,7 @@ router.get('/:id', async(req, res) => {
 });
 
 router.post('/:userId', async (req, res) => {
-    console.log(req.params.userId)
+    console.log((req.params.userId), '<------userID')
     try {
         const findUser = await User.findById(req.params.userId)
         console.log(findUser, "this is the user")
@@ -31,9 +31,11 @@ router.post('/:userId', async (req, res) => {
         console.log(newPost, "this is the response")
         findUser.posts.push(newPost)
         await findUser.save()
+        console.log(findUser, '<---findUser')
         res.json(newPost)
     } catch(err){
         console.log(err)
+        
     }
 
    

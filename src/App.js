@@ -33,7 +33,13 @@ class App extends Component {
     isLogged: false,
     post: {},
     postsCreated: [],
-    id: ''
+    id: '',
+    title: '',
+    area: '',
+    lat: '',
+    long: '',
+    homePics: null,
+    info: '',
   }
   async componentDidMount(){
     this.getPosts()
@@ -57,6 +63,12 @@ class App extends Component {
         })
     })
   }
+handleChange = (e) => {
+  this.setState({[e.currentTarget.name]: e.currentTarget.value})
+}
+handlePictureChange = (file) => {
+  this.setState({homePics : file.target.files[0]})
+}
   addProfilePicture = event => {
     doAddFile(event.target.files[0])
       .then(file => file.ref.getDownloadURL())
@@ -110,17 +122,47 @@ class App extends Component {
   }
   addPost = async (e, postFromForm) => {
     e.preventDefault();
+    const post = {
+      lat: this.state.lat,
+      long: this.state.long,
+      info: this.state.info,
+      area: this.state.area,
+      title: this.state.title
+
+    }
     try {
-      const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`, { 
-          method: 'POST',
-          body: JSON.stringify(postFromForm),
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      })
-      const parsedResponse = await createdPostResponse.json();
-      this.setState({postsCreated: [...this.state.postsCreated, parsedResponse.data]})
-      this.props.history.push('/home')
+      if(this.state.homePics) {
+        doAddFile(this.state.homePics)
+          .then(file => file.ref.getDownloadURL())
+          .then(async url => {
+              const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`, { 
+                  method: 'POST',
+                  body: JSON.stringify({...post, homePics: url}),
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              })
+                const parsedResponse = await createdPostResponse.json();
+                console.log(parsedResponse, '<------parsedRe')
+                this.setState({
+                  postsCreated: [...this.state.postsCreated, parsedResponse.data],
+                })
+                this.props.history.push('/home')
+          })
+      }
+      // const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`, { 
+      //     method: 'POST',
+      //     body: JSON.stringify(postFromForm),
+      //     headers: {
+      //         'Content-Type': 'application/json'
+      //     }
+      // })
+      // const parsedResponse = await createdPostResponse.json();
+      // this.setState({
+      //   postsCreated: [...this.state.postsCreated, parsedResponse.data],
+
+      // })
+      // this.props.history.push('/home')
   } catch(err){
       console.log(err)
   }
@@ -129,7 +171,7 @@ class App extends Component {
     // const { currentUser } = this.state
     return (
       <div>
-        <NavBar isLogged = {this.state.isLogged} currentUser={this.state.currentUser}/>
+        <NavBar isLogged={this.state.isLogged} currentUser={this.state.currentUser} id={this.state.id}/>
         {/* <h1>Hello {this.state.message}</h1> */}
         { !this.state.isLogged
         ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
@@ -145,8 +187,9 @@ class App extends Component {
           <Route exact path ={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
-          <Route exact path={ROUTES.NEW} render={() => <CreatePost addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture}/> } />
-          <Route exact path={ROUTES.PROFILE} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} postsCreated={this.state.postsCreated} />} />
+          <Route exact path={ROUTES.NEW} render={() => 
+            <CreatePost handlePictureChange={this.handlePictureChange} addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture} handleChange={this.handleChange} state={this.state}/> } />
+          <Route exact path={ROUTES.PROFILE} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} state={this.state} postsCreated={this.state.postsCreated} />} />
 
           <Route component={My404} />
         </Switch>
