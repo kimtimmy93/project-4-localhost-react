@@ -15,6 +15,7 @@ class UserShow extends Component {
     }
     render(){
         return(
+        
         <MapContainer
             google={this.props.google}
             center={{lat: this.props.lat, lng: this.props.long }}

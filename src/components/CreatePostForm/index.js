@@ -4,7 +4,9 @@ import { Form, Button, FormControl } from 'react-bootstrap'
 
 class CreatePost extends Component {
     state = {
-        address: '',
+        title: '',
+        lat: '',
+        long: '',
         homePics: '',
         info: '',
     }
@@ -15,9 +17,15 @@ class CreatePost extends Component {
         console.log(this.props.id, "THIS IS ON THE CREATE COMPONENT")
         return(
             <Form onSubmit={(e) => this.props.addPost(e, this.state)}>
+                 <Form.Group controlId="exampleForm.ControlInput">
+                    <Form.Label>Title</Form.Label>
+                     <Form.Control type="text" name="title" placeholder="Enter a title" value={this.state.title} onChange={this.handleChange} />
+                </Form.Group>
                 <Form.Group controlId="exampleForm.ControlInput1">
-                    <Form.Label>Address</Form.Label>
-                     <Form.Control type="text" name="address" placeholder="1234 abc street, Los Angeles, CA 00000" value={this.state.address} onChange={this.handleChange} />
+                    <Form.Label>Latitude:</Form.Label>
+                     <Form.Control type="text" name="lat" placeholder="Enter Latitude" value={this.state.lat} onChange={this.handleChange} />
+                     <Form.Label>Longitude:</Form.Label>
+                     <Form.Control type="text" name="long" placeholder="Enter Longitude" value={this.state.long} onChange={this.handleChange} />
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Upload Your Picture</Form.Label>
