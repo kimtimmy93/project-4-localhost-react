@@ -18,6 +18,27 @@ class UserShow extends Component {
     }
     render(){
         return(
+            <div>
+            <div>
+            {
+            this.props.postsCreated.map((e, i) =>
+            <div key={i}>
+            <div variant="top" src={e.homePics} className='card-img-top'/>
+                <div>
+                    <div className="title">{e.title}</div>
+                    <div>
+                        {e.info}
+                    </div>
+                   
+                </div>
+            </div>
+            )
+            }
+        </div>
+        </div>
+        )
+        
+        return(
         <div className="map">
         <MapContainer
             google={this.props.google}
