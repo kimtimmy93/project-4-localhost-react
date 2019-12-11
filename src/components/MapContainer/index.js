@@ -14,15 +14,13 @@ class MapContainer extends Component {
               google={this.props.google}
               zoom={8}
               style={mapStyles}
-              initialCenter={{lat: 34.0500, lng: -118.2500}}
+              initialCenter={{lat: this.props.lat, lng: this.props.long}}
             >
                             
                                 <Marker
                                     icon={{url: '../lh.png', scaledSize: {height: 20, width: 20}}}
-                                    position={{lat: 34.0500, lng: -118.2500}}
+                                    position={{lat: this.props.lat, lng: this.props.long}}
                                     />
-            
-               
             </Map>
             </div>
             

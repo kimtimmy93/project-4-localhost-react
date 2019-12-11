@@ -120,7 +120,7 @@ class App extends Component {
       })
       const parsedResponse = await createdPostResponse.json();
       this.setState({postsCreated: [...this.state.postsCreated, parsedResponse.data]})
-      this.props.history.push('/')
+      this.props.history.push('/home')
   } catch(err){
       console.log(err)
   }
@@ -130,7 +130,7 @@ class App extends Component {
     return (
       <div>
         <NavBar isLogged = {this.state.isLogged} currentUser={this.state.currentUser}/>
-        <h1>Hello {this.state.message}</h1>
+        {/* <h1>Hello {this.state.message}</h1> */}
         { !this.state.isLogged
         ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
         : ''
