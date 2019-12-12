@@ -4,7 +4,13 @@
 # Description
   Welcome to Local:Host, your home away from home! 
 
-![Image]
+
+# Getting Started 
+[Open the link ]()
+
+To begin create an account. If you wish to be a host, go to 'Create New' to create a new post. If you are a traveler looking for a localhost, browse through our many hosts!
+
+
 # Technologies Used 
 - MongoDB
 - Express
@@ -12,8 +18,4 @@
 - Javascript
 - Firebase 
 
-# Getting Started 
-[Open the link ]()
-
-To begin create an account. If you wish to be a host, go to 'Create New' to create a new post. If you are a traveler looking for a localhost, browse through our many hosts!
 
