@@ -8,35 +8,27 @@ class UserShow extends Component {
     state = {
         user: {}
     }
+
     async componentDidMount(){
-        console.log(this.props.id, 'userShow IDDDD')
-        const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/users/${this.props.state.id}`)
-        console.log(reqUser, '<----reqUser')
+        try {
+
+        const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/users/${this.props.match.params.userId}`, {
+            method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+        })
+        
         const parsedUser = await reqUser.json()
         this.setState({
             user: parsedUser
         })
+        } catch(err){
+            console.log(err)
+        }
     }
-    //   viewUser = async () => {
-    //     console.log('view event')
-    //     try {
-    //       const createdUsers = await fetch(`${process.env.REACT_APP_API_URL}/users/${this.props.id}`,{
-    //         method: 'GET',
-    //         credentials: 'include',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         }
-    //       })
-    //       const parsedCreatedUsers = await createdUsers.json();
-    //       console.log(parsedCreatedUsers, 'this is view usersparsed')
-    //       this.setState({
-    //         user: parsedCreatedUser
-    //       })
-    //     } catch(err){
-    //       console.log(err);
-    //     }
-    //     this.props.history.push(`/users/${this.props.id}`)
-    //   }
+   
     render(){
         return(
         <div>
@@ -60,7 +52,7 @@ class UserShow extends Component {
     <Switch>
         <div className="map">
             <MapContainer
-            state={this.props.state}
+            state={this.state}
             postsCreated={this.props.postsCreated}
             />
         </div>

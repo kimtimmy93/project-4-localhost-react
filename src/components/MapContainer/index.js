@@ -18,17 +18,14 @@ class MapContainer extends Component {
                {
                   this.props.postsCreated.map(p => 
                      <Marker
-                        icon={{url: '../lh.png', scaledSize: {height: 40, width: 40}}}
+                        // icon={{url: '../lh.png', scaledSize: {height: 40, width: 40}}}
                         position={{lat: p.lat, lng: p.long}}
                      />
                   )
-               }
-                            
-                                
+               }        
             </Map>
-            </div>
-            
-        );
+         </div>
+        );     
       }
 }
  
