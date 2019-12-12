@@ -1,4 +1,4 @@
-# project-4-Local:Host
+# Project 4 - Local:Host
 ![Image of home screen](https://imgur.com/asiPIIR)
 
 # Description
