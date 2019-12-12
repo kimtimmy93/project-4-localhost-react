@@ -1,8 +1,8 @@
 # Project 4 - Local:Host
-![Image of home screen](https://imgur.com/asiPIIR)
+![Image of home screen](https://i.imgur.com/asiPIIR.png)
 
 # Description
-![Image of host page](https://imgur.com/1MDilNE)
+![Image of host page](https://i.imgur.com/1MDilNE.png)
 Welcome to Local:Host, your home away from home! 
 
 ![Image]
