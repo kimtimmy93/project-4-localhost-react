@@ -5,7 +5,7 @@ import NavBar from './components/NavBar'
 import PostContainer from './components/PostContainer'
 import PostList from './components/PostList'
 import MainArea from './MainArea'
-// import PostShow from './components/PostShow'
+import PostShow from './components/PostShow'
 import UserShow from './components/UserShow'
 import SignInWithGoogle from './components/SignInWithGoogle'
 import SignUpWithEmailPassword from './components/SignUpWithEmailPassword'
@@ -94,6 +94,7 @@ handlePictureChange = (file) => {
       const posts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`)
       const parsedPosts = await posts.json()
       console.log(parsedPosts, '<----parsedPost')
+      console.log(parsedPosts[0]._id)
       this.setState({
         postsCreated: parsedPosts
       })
@@ -110,6 +111,7 @@ handlePictureChange = (file) => {
           'Content-Type': 'application/json'
         }
       })
+      console.log(createdPosts[0]._id, '<--cPid')
       const parsedCreatedPosts = await createdPosts.json();
       console.log(parsedCreatedPosts, 'this is view post parsed')
       this.setState({
@@ -189,7 +191,8 @@ handlePictureChange = (file) => {
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
           <Route exact path={ROUTES.NEW} render={() => 
             <CreatePost handlePictureChange={this.handlePictureChange} addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture} handleChange={this.handleChange} state={this.state}/> } />
-          <Route exact path={`${ROUTES.PROFILE}/${this.state.id}/profile`} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} state={this.state} postsCreated={this.state.postsCreated} />} />
+          {/* <Route exact path={`${ROUTES.PROFILE}/${this.state.id}/profile`} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} state={this.state} postsCreated={this.state.postsCreated} />} /> */}
+          <Route exact path={ROUTES.PROFILE + ':postId' } render={() => <PostShow viewPost={this.viewPost} />} />
 
           <Route component={My404} />
         </Switch>

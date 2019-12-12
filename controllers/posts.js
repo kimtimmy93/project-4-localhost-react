@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async(req, res) => {
     try {
         const foundUser = await foundUser.findOne({'posts': req.params.id}).populate('posts')
+        console.log(req.params.id, '<---postId')
     } catch(err){
         console.log(err)
     }

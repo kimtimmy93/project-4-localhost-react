@@ -12,7 +12,7 @@ render(){
         <div className="container">
             {
             this.props.postsCreated.map((e, i) => {
-            console.log(e)
+            console.log(e, '<----e')
             return(
             <div key={i}>
             <Card id="the-card">
@@ -22,7 +22,7 @@ render(){
                     <Card.Text>
                         {e.area}
                     </Card.Text>
-            <Button variant="primary" href={ROUTES.PROFILE}>Go to {e.area}</Button>
+            <Button variant="primary" href={ROUTES.PROFILE + e._id}>Go to {e.area}</Button>
                 </Card.Body>
                 </Card>
             </div>
