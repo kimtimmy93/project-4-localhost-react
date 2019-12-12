@@ -16,7 +16,11 @@ router.get('/', async (req, res) => {
 // show
 router.get('/:id', async(req, res) => {
     try {
-        const foundUser = await foundUser.findOne({'posts': req.params.id}).populate('posts')
+        const foundUser = await foundUser.findOne({'posts': req.params.id}).populate({
+            path: 'contents',
+            match: {_id: req.params.id}
+         }).exec()
+         res.json(foundUser)
         console.log(req.params.id, '<---postId')
     } catch(err){
         console.log(err)

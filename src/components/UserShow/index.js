@@ -51,7 +51,6 @@ class UserShow extends Component {
                                 <div>
                                     {e.info}
                                 </div>
-                   
                             </div>
                         </div>
                         )
