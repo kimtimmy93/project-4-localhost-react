@@ -175,10 +175,10 @@ handlePictureChange = (file) => {
       <div>
         <NavBar isLogged={this.state.isLogged} currentUser={this.state.currentUser} id={this.state.id}/>
         {/* <h1>Hello {this.state.message}</h1> */}
-        { !this.state.isLogged
+        {/* { !this.state.isLogged
         ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
         : ''
-        }
+        } */}
        
         {/* <PostContainer /> */}
         <Switch>

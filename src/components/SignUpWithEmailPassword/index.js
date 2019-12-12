@@ -50,7 +50,7 @@ class SignUpWithEmailPassWord extends Component {
             password === '' ||
             email === ''
         return (
-            <div>
+            <div className="signupform">
                 <h1>SIGNUP</h1>
                 {/* <h1>SIGNUP</h1>
                 <form onSubmit={this.onSubmit}>

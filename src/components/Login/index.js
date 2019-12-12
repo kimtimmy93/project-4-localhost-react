@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { doSignInWithEmailAndPassword} from '../../firebase/firebase'
 
+import { Button, Form } from 'react-bootstrap'
+import './style.css'
+
 import * as ROUTES from '../../constants/routes'
 
 class Login extends Component {
@@ -32,14 +35,16 @@ class Login extends Component {
             password === '' ||
             email === ''
         return (
-            <div>
+            <div className="loginform">
                 <h1>LOGIN</h1>
-                <form onSubmit={this.onSubmit}>
-                    <input type='text' name='email' value={email} placeholder="EMAIL" onChange={this.onChange}/>
-                    <input type='text' name='password' value={password} placeholder="PASSWORD" onChange={this.onChange}/>
-                    <input type='submit' value='submit' disabled={isInvalid}/>
+                <Form onSubmit={this.onSubmit}>
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type='text' name='email' value={email} placeholder="EMAIL" onChange={this.onChange}/>
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type='text' name='password' value={password} placeholder="PASSWORD" onChange={this.onChange}/>
+                    <Button variant="primary" type='submit' value='submit' disabled={isInvalid}/>
                     {error && <p>{error.message}</p>}
-                </form>
+                </Form>
             </div>
         )
     }
