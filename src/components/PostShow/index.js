@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import { Switch } from 'react-router-dom'
 
+import './style.css'
 
 class PostShow extends Component{
     state = {
         post: {}
     }
-    //componentDidMount 
-    // fetch this route 
-    // props.match.params.postId
-    // once u received the object 
-    // set state with this object 
     async componentDidMount(){
         try {
             const fetchedPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.props.match.params.postId}`, {
@@ -31,14 +27,18 @@ class PostShow extends Component{
     }
     render(){
         return(
+        
+               
             <div>
+                 <img src={this.state.post.homePics}/>
                 {
                     this.state.post
                         ? 
-                        <h1>{this.state.post.title}</h1>
+                        <h1>{this.state.post.title}!</h1>
                         : <div>...loading</div>
                 }
             </div>
+            
 
                 
 
