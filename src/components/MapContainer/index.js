@@ -16,15 +16,16 @@ class MapContainer extends Component {
               style={mapStyles}
             >
                {
-                  this.props.postsCreated.map(p => 
+                  this.props.postsCreated.map(p  =>  
+                     // console.log(p, '<---p')
                      <Marker
                         // icon={{url: '../lh.png', scaledSize: {height: 40, width: 40}}}
                         position={{lat: p.lat, lng: p.long}}
                      />
-                  )
+                  )  
                }        
             </Map>
-         </div>
+            </div>
         );     
       }
 }

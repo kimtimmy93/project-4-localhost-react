@@ -4,9 +4,13 @@ const User = require('../models/Users')
 
 // profile
 router.get('/:id/profile', async(req, res) => {
-    const foundUser = await User.findById(req.params.id)
-    const getPost = await this.post.find({});
-    console.log(foundUser, 'this is found user')
+    try {
+        const foundUser = await User.findById(req.params.id)
+        const getPost = await this.post.find({});
+        console.log(foundUser, 'this is found user')
+    }catch(err){
+        console.log(err)
+    }
     
 });
 

@@ -8,12 +8,10 @@ class UserShow extends Component {
     state = {
         user: {}
     }
-
     async componentDidMount(){
         try {
-
-        const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/users/${this.props.match.params.userId}`, {
-            method: 'GET',
+        const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/auth/users/${this.props.match.params.userId}/profile`, {
+                method: 'GET',
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
@@ -24,6 +22,7 @@ class UserShow extends Component {
         this.setState({
             user: parsedUser
         })
+        console.log(parsedUser, '<---PUUUUUUUUUU')
         } catch(err){
             console.log(err)
         }
