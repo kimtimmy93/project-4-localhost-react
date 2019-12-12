@@ -19,9 +19,9 @@ render(){
             <Card.Img variant="top" src={e.homePics} className='card-img-top'/>
                 <Card.Body>
                     <Card.Title>{e.title}</Card.Title>
-                    <Card.Text>
+                    {/* <Card.Text>
                         {e.area}
-                    </Card.Text>
+                    </Card.Text> */}
             <Button variant="primary" href={ROUTES.PROFILE + e._id}>Go to {e.area}</Button>
                 </Card.Body>
                 </Card>

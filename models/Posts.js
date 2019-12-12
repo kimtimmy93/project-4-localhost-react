@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
     title: String,
+    area: String,
     lat: Number,
     long: Number,
     homePics: String,
