@@ -15,7 +15,6 @@ To begin create an account. If you wish to be a host, go to 'Create New' to crea
 - MongoDB
 - Express
 - React
-- Javascript
 - Firebase 
 
 

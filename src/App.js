@@ -152,19 +152,6 @@ handlePictureChange = (file) => {
                 this.props.history.push('/home')
           })
       }
-      // const createdPostResponse = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`, { 
-      //     method: 'POST',
-      //     body: JSON.stringify(postFromForm),
-      //     headers: {
-      //         'Content-Type': 'application/json'
-      //     }
-      // })
-      // const parsedResponse = await createdPostResponse.json();
-      // this.setState({
-      //   postsCreated: [...this.state.postsCreated, parsedResponse.data],
-
-      // })
-      // this.props.history.push('/home')
   } catch(err){
       console.log(err)
   }

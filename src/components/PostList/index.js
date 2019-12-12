@@ -9,6 +9,7 @@ import * as ROUTES from '../../constants/routes'
 class PostList extends Component {
 render(){
     return(
+        
         <div className="container">
             {
             this.props.postsCreated.map((e, i) => {
