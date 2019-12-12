@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Form, Button, FormControl } from 'react-bootstrap'
+import './style.css'
 
 class CreatePost extends Component {
     // state = {
@@ -17,6 +18,8 @@ class CreatePost extends Component {
     render(){
         console.log(this.props.state.id, "THIS IS ON THE CREATE COMPONENT")
         return(
+            <div className='form'>
+                <h1>Create New Local:Host</h1>
             <Form onSubmit={(e) => this.props.addPost(e)}>
                  <Form.Group controlId="exampleForm.ControlInput">
                     <Form.Label>Title</Form.Label>
@@ -42,6 +45,7 @@ class CreatePost extends Component {
                     </Form.Group>
                 <Button type='Submit'>Submit</Button>
             </Form>
+            </div>
         )
     }
 }

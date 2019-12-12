@@ -14,6 +14,8 @@ class MapContainer extends Component {
       console.log(typeof(this.props.long))
       console.log(longi)
         return (
+           this.props
+           ?
            <div>
             <Map
               google={this.props.google}
@@ -27,6 +29,7 @@ class MapContainer extends Component {
                      />
             </Map>
             </div>
+            : ''
         )  
    }   
 }

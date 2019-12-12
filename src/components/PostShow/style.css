@@ -1,13 +1,42 @@
 img {
-    width: 100%;
-    height: 23rem;
+    width: 60%;
+    height: 24rem;
     border: solid black 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    
 }
 
 h1{
+    height: 70px;
     text-align: center;
+    font-family: 'Audiowide', cursive;
+}
+
+.hi{
+    margin-top: 100px;
 }
 
 p {
     text-align: center;
+    /* margin-bottom: 3000px; */
+    display: flex;
+    align-items: center;
+    margin: 60px;
 }
+
+.map{
+    height: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* margin-top: 60px; */
+    margin: 0 auto;
+    
+}
+
