@@ -2,8 +2,7 @@
 ![Image of home screen](https://i.imgur.com/asiPIIR.png)
 
 # Description
-![Image of host page](https://i.imgur.com/1MDilNE.png)
-Welcome to Local:Host, your home away from home! 
+  Welcome to Local:Host, your home away from home! 
 
 ![Image]
 # Technologies Used 
