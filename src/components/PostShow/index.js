@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Switch } from 'react-router-dom'
 
 
 class PostShow extends Component{
@@ -10,9 +11,23 @@ class PostShow extends Component{
     // props.match.params.postId
     // once u received the object 
     // set state with this object 
-
     async componentDidMount(){
-        const fetchedPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/`)
+        try {
+            const fetchedPosts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.props.match.params.postId}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const parsedFetchedPosts = await fetchedPosts.json();
+            this.setState({
+                post: parsedFetchedPosts
+              })
+              console.log(parsedFetchedPosts, '<----pFP')
+        } catch(err){
+            console.log(err)
+        }
     }
     render(){
         return(
@@ -24,6 +39,11 @@ class PostShow extends Component{
                         : <div>...loading</div>
                 }
             </div>
+
+                
+
+
+
         )
     }
     
