@@ -42,7 +42,9 @@ class Login extends Component {
                     <Form.Control type='text' name='email' value={email} placeholder="EMAIL" onChange={this.onChange}/>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type='text' name='password' value={password} placeholder="PASSWORD" onChange={this.onChange}/>
-                    <Button variant="primary" type='submit' value='submit' disabled={isInvalid}/>
+                    <Button variant="primary" type="submit" value='submit' disabled={isInvalid}>
+                        Submit
+                    </Button>
                     {error && <p>{error.message}</p>}
                 </Form>
             </div>
