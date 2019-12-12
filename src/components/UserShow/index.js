@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import MapContainer from '../MapContainer'
-import {Marker} from 'google-maps-react'
 import './style.css'
 import { Switch } from 'react-router-dom'
 
@@ -10,7 +9,7 @@ class UserShow extends Component {
         user: {}
     }
     async componentDidMount(){
-        console.log(this.props.state.id, 'userShow IDDDD')
+        console.log(this.props.id, 'userShow IDDDD')
         const reqUser = await fetch(`${process.env.REACT_APP_API_URL}/users/${this.props.state.id}`)
         console.log(reqUser, '<----reqUser')
         const parsedUser = await reqUser.json()
@@ -64,10 +63,6 @@ class UserShow extends Component {
             <MapContainer
             state={this.props.state}
             postsCreated={this.props.postsCreated}
-            // google={this.props.google}
-            // // center={{lat: this.props.lat, lng: this.props.long }}
-            // height='300px'
-            // zoom={15}
             />
         </div>
     </Switch>

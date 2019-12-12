@@ -9,11 +9,14 @@ import * as ROUTES from '../../constants/routes'
 class PostList extends Component {
 render(){
     return(
-        <div>
-           <Card>
+        <div className="container">
             {
-            this.props.postsCreated.map((e, i) =>
+            this.props.postsCreated.map((e, i) => {
+            console.log(e)
+            return(
             <div key={i}>
+                           <Card id="the-card">
+
             <Card.Img variant="top" src={e.homePics} className='card-img-top'/>
                 <Card.Body>
                     <Card.Title>{e.title}</Card.Title>
@@ -22,10 +25,13 @@ render(){
                     </Card.Text>
             <Button variant="primary" href={ROUTES.PROFILE}>Go to {e.area}</Button>
                 </Card.Body>
+                </Card>
+
             </div>
-                )
+            )
             }
-        </Card>
+            )
+            }
         </div>
      
         

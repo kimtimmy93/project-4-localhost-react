@@ -12,9 +12,8 @@ class MapContainer extends Component {
         <div>
             <Map
               google={this.props.google}
-              zoom={10}
+              zoom={12}
               style={mapStyles}
-              initialCenter={{lat: 34.0500, lng: -118.2500}}
             >
                {
                   this.props.postsCreated.map(p => 
