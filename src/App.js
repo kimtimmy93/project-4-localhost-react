@@ -184,12 +184,12 @@ handlePictureChange = (file) => {
           <PostList postsCreated={this.state.postsCreated} />} />
           <Route exact path={ROUTES.LOGIN} component={ Login } />
           <Route exact path={ROUTES.SIGN_UP} render={()=> <SignUpWithEmailPassword doSetCurrentUser={this.doSetCurrentUser}/>}/>
-          <Route exact path ={ROUTES.LOGOUT} />
+          <Route exact path={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
           <Route exact path={ROUTES.NEW} render={() => 
             <CreatePost handlePictureChange={this.handlePictureChange} addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture} handleChange={this.handleChange} state={this.state}/> } />
-          <Route exact path={ROUTES.PROFILE} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} state={this.state} postsCreated={this.state.postsCreated} />} />
+          <Route exact path={`${ROUTES.PROFILE}/${this.state.id}/profile`} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} state={this.state} postsCreated={this.state.postsCreated} />} />
 
           <Route component={My404} />
         </Switch>

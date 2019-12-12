@@ -15,8 +15,7 @@ render(){
             console.log(e)
             return(
             <div key={i}>
-                           <Card id="the-card">
-
+            <Card id="the-card">
             <Card.Img variant="top" src={e.homePics} className='card-img-top'/>
                 <Card.Body>
                     <Card.Title>{e.title}</Card.Title>
@@ -26,7 +25,6 @@ render(){
             <Button variant="primary" href={ROUTES.PROFILE}>Go to {e.area}</Button>
                 </Card.Body>
                 </Card>
-
             </div>
             )
             }

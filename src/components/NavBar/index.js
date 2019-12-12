@@ -37,7 +37,7 @@ const NavBar = props => {
           </Nav>
             {
                 props.isLogged
-                ?<Nav.Link href={`/users/${props.id}`}>{props.currentUser.displayName}</Nav.Link>
+                ?<Nav.Link href={`${ROUTES.PROFILE}${this.state.id}/profile`}>{props.currentUser.displayName}</Nav.Link>
                 : ''
             }
             {
