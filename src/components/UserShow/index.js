@@ -49,12 +49,12 @@ class UserShow extends Component {
                 </div>
     </Switch>
     <Switch>
-        <div className="map">
+        {/* <div className="map">
             <MapContainer
             state={this.state}
             postsCreated={this.props.postsCreated}
             />
-        </div>
+        </div> */}
     </Switch>
     </div>
     )

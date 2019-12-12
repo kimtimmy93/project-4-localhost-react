@@ -7,28 +7,30 @@ const mapStyles = {
 }
 
 class MapContainer extends Component {
-    render() {
+   render(){
+      const lati = this.props.lat
+      console.log(lati)
+      const longi = this.props.long
+      console.log(typeof(this.props.long))
+      console.log(longi)
         return (
-        <div>
+           <div>
             <Map
               google={this.props.google}
               zoom={12}
               style={mapStyles}
+              initialCenter={{lat: lati, lng: longi}}
             >
-               {
-                  this.props.postsCreated.map(p  =>  
-                     // console.log(p, '<---p')
-                     <Marker
+               <Marker
                         // icon={{url: '../lh.png', scaledSize: {height: 40, width: 40}}}
-                        position={{lat: p.lat, lng: p.long}}
+                        position={{lat: lati, lng: longi}}
                      />
-                  )  
-               }        
             </Map>
             </div>
-        );     
-      }
+        )  
+   }   
 }
+
  
 export default GoogleApiWrapper({
   apiKey: `${process.env.REACT_APP_MAP_API_KEY}`

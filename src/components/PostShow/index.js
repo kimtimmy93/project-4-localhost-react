@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Switch } from 'react-router-dom'
 
 import './style.css'
+import MapContainer from '../MapContainer'
 
 class PostShow extends Component{
     state = {
@@ -38,6 +39,9 @@ class PostShow extends Component{
                         : <div>...loading</div>
                 }
                     <p>{this.state.post.info}</p>
+                    
+
+                    <MapContainer lat={this.state.post.lat} long={this.state.post.long}/>
             </div>
             
 
