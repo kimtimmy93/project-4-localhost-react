@@ -37,6 +37,7 @@ class PostShow extends Component{
                         <h1>{this.state.post.title}!</h1>
                         : <div>...loading</div>
                 }
+                    <p>{this.state.post.info}</p>
             </div>
             
 
