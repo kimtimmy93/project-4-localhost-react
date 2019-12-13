@@ -13,7 +13,6 @@ render(){
         <div className="container">
             {
             this.props.postsCreated.map((e, i) => {
-            // console.log(e, '<----e')
             return(
             <div key={i}>
             <Card id="the-card">

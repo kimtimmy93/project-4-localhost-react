@@ -7,7 +7,6 @@ router.get('/:id/profile', async(req, res) => {
     try {
         const foundUser = await User.findById(req.params.id)
         const getPost = await this.post.find({});
-        console.log(foundUser, 'this is found user')
     }catch(err){
         console.log(err)
     }
@@ -16,16 +15,14 @@ router.get('/:id/profile', async(req, res) => {
 
 router.get('/users', async (req, res) => {
     const getUsers = await User.find({})
-    console.log('hit the user route', getUsers)
     res.json(getUsers)
 });
 
 router.post('/users', async (req, res) => {
-    console.log('hit the create user route', req.body)
     try {
         const createdUser = await User.create(req.body)
         res.json(createdUser)
-        console.log(createdUser, "NEW Users")
+        
         
     } catch(err) {
         console.log(err)

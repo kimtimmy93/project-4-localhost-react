@@ -93,8 +93,7 @@ handlePictureChange = (file) => {
     try {
       const posts = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.state.id}`)
       const parsedPosts = await posts.json()
-      console.log(parsedPosts, '<----parsedPost')
-      console.log(parsedPosts[0]._id)
+  
       this.setState({
         postsCreated: parsedPosts
       })
@@ -111,9 +110,7 @@ handlePictureChange = (file) => {
           'Content-Type': 'application/json'
         }
       })
-      console.log(createdPosts[0]._id, '<--cPid')
       const parsedCreatedPosts = await createdPosts.json();
-      console.log(parsedCreatedPosts, 'this is view post parsed')
       this.setState({
         post: parsedCreatedPosts.data
       })
@@ -145,7 +142,6 @@ handlePictureChange = (file) => {
                   }
               })
                 const parsedResponse = await createdPostResponse.json();
-                console.log(parsedResponse, '<------parsedRe')
                 this.setState({
                   postsCreated: [...this.state.postsCreated, parsedResponse.data],
                 })
