@@ -9,10 +9,7 @@ const mapStyles = {
 class MapContainer extends Component {
    render(){
       const lati = this.props.lat
-      console.log(lati)
       const longi = this.props.long
-      console.log(typeof(this.props.long))
-      console.log(longi)
         return (
            this.props
            ?
