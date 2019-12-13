@@ -52,16 +52,6 @@ class SignUpWithEmailPassWord extends Component {
         return (
             <div className="signupform">
                 <h1>SIGNUP</h1>
-                {/* <h1>SIGNUP</h1>
-                <form onSubmit={this.onSubmit}>
-                    <input type='text' name='email' value={email} placeholder="EMAIL" onChange={this.onChange}/>
-                    <input type='text' name='password' value={password} placeholder="PASSWORD" onChange={this.onChange}/>
-                    <input type='text' name='passwordTwo' value={passwordTwo} placeholder="PASSWORD" onChange={this.onChange}/>
-                    <input type='submit' value='submit' disabled={isInvalid}/>
-                    {error && <p>{error.message}</p>}
-                </form> */}
-            
-
 <Form onSubmit={this.onSubmit}>
 <Form.Group controlId="formBasicEmail">
   <Form.Label>Email address</Form.Label>
@@ -77,7 +67,7 @@ class SignUpWithEmailPassWord extends Component {
 </Form.Group>
 <Form.Group controlId="formBasicPasswordTwo">
   <Form.Label>Password</Form.Label>
-  <Form.Control type="password"  name='passwordTwo' value={password} placeholder=" Re-Enter Password"  onChange={this.onChange}/>
+  <Form.Control type="password"  name='passwordTwo' value={passwordTwo} placeholder=" Re-Enter Password"  onChange={this.onChange}/>
 </Form.Group>
 <Button variant="primary" type="submit" value='submit' disabled={isInvalid}>
   Submit

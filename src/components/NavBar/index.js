@@ -16,7 +16,7 @@ const NavBar = props => {
         <div className="sticky-nav">
         <>
         <Navbar bg="light" variant="light" >
-          <Navbar.Brand href={ROUTES.HOME} className="localhost">Local:Host</Navbar.Brand>
+          <Navbar.Brand href={ROUTES.HOME} className="localhost">LOCAL:HOST</Navbar.Brand>
           <Nav className="mr-auto">
           <Nav.Link href={ROUTES.HOME}>HOME</Nav.Link>
             {
