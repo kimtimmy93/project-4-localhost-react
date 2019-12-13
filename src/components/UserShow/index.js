@@ -22,7 +22,6 @@ class UserShow extends Component {
         this.setState({
             user: parsedUser
         })
-        console.log(parsedUser, '<---PUUUUUUUUUU')
         } catch(err){
             console.log(err)
         }
