@@ -21,23 +21,17 @@ class PostShow extends Component{
             this.setState({
                 post: parsedFetchedPosts
               })
-              console.log(parsedFetchedPosts, '<----pFP')
         } catch(err){
             console.log(err)
         }
     }
     render(){
         return(
-        
-               
             <div>
                  <img src={this.state.post.homePics}/>
-                {
-                    this.state.post
-                        ? 
+               
                         <h1>{this.state.post.title}!</h1>
-                        : <div>...loading</div>
-                }
+                       
                     <p>{this.state.post.info}</p>
                 <div className="map">
                     <MapContainer lat={this.state.post.lat} long={this.state.post.long}/>

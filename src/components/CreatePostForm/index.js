@@ -4,17 +4,7 @@ import { Form, Button, FormControl } from 'react-bootstrap'
 import './style.css'
 
 class CreatePost extends Component {
-    // state = {
-    //     title: '',
-    //     area: '',
-    //     lat: '',
-    //     long: '',
-    //     homePics: '',
-    //     info: '',
-    // }
-    // handleChange = (e) => {
-    //     this.setState({[e.currentTarget.name]: e.currentTarget.value})
-    // }
+   
     render(){
         console.log(this.props.state.id, "THIS IS ON THE CREATE COMPONENT")
         return(

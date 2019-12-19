@@ -145,7 +145,7 @@ handlePictureChange = (file) => {
                 this.setState({
                   postsCreated: [...this.state.postsCreated, parsedResponse.data],
                 })
-                this.props.history.push('/home')
+                this.props.history.push('/')
           })
       }
   } catch(err){
@@ -153,17 +153,9 @@ handlePictureChange = (file) => {
   }
 }
   render(){
-    // const { currentUser } = this.state
     return (
       <div>
         <NavBar isLogged={this.state.isLogged} currentUser={this.state.currentUser} id={this.state.id}/>
-        {/* <h1>Hello {this.state.message}</h1> */}
-        {/* { !this.state.isLogged
-        ? <SignInWithGoogle doSetCurrentUser={this.doSetCurrentUser} />
-        : ''
-        } */}
-       
-        {/* <PostContainer /> */}
         <Switch>
           <Route exact path={ROUTES.HOME} render={() =>  
           <PostList postsCreated={this.state.postsCreated} />} />
@@ -171,7 +163,6 @@ handlePictureChange = (file) => {
           <Route exact path={ROUTES.SIGN_UP} render={()=> <SignUpWithEmailPassword doSetCurrentUser={this.doSetCurrentUser}/>}/>
           <Route exact path={ROUTES.LOGOUT} />
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
-          {/* <Route exact path={ROUTES.POST} component={ PostShow } /> */}
           <Route exact path={ROUTES.NEW} render={() => 
             <CreatePost handlePictureChange={this.handlePictureChange} addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture} handleChange={this.handleChange} state={this.state}/> } />
           <Route exact path={ROUTES.PROFILE+this.state.id+'/profile'} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} state={this.state} postsCreated={this.state.postsCreated} />} />
