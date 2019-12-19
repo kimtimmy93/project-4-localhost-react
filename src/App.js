@@ -28,7 +28,6 @@ const My404 = () => {
 };
 class App extends Component {
   state = {
-    // message: '',
     currentUser: null,
     isLogged: false,
     post: {},
@@ -43,11 +42,6 @@ class App extends Component {
   }
   async componentDidMount(){
     this.getPosts()
-    // const message = await fetch('/api/v1/hello')
-    // const messageJson = await message.json()
-    // this.setState({
-    //   message: messageJson.message
-    // })
     auth.onAuthStateChanged(authUser => {
       authUser
         ? this.setState({
