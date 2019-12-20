@@ -6,7 +6,6 @@ import './style.css'
 class CreatePost extends Component {
    
     render(){
-        console.log(this.props.state.id, "THIS IS ON THE CREATE COMPONENT")
         return(
             <div className='form'>
                 <h1>Create New Local:Host</h1>
