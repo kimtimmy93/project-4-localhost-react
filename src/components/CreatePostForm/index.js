@@ -4,7 +4,6 @@ import { Form, Button, FormControl } from 'react-bootstrap'
 import './style.css'
 
 class CreatePost extends Component {
-   
     render(){
         return(
             <div className='form'>

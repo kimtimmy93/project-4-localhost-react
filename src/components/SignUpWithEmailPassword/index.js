@@ -27,7 +27,6 @@ class SignUpWithEmailPassWord extends Component {
                     password: this.state.password,
                     _id: authUser.user.uid
                 }
-                console.log(authUser)
                 const hitPost = await fetch(`${process.env.REACT_APP_API_URL}/auth/users`, {
                     method: "POST",
                     credentials: 'include',
@@ -75,9 +74,6 @@ class SignUpWithEmailPassWord extends Component {
 {error && <p>{error.message}</p>}
 </Form>
 </div>
-
-
-
         )
     }
 }

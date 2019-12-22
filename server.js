@@ -7,9 +7,6 @@ const cors = require('cors');
 const PORT = process.env.PORT || 8000
 require('./config/db')
 
-// const User = require('./models/Users')
-// const Post = require('./models/Posts')
-
 const userController = require('./controllers/users');
 const postController = require('./controllers/posts');
 

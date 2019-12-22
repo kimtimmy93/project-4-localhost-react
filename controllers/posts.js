@@ -31,11 +31,8 @@ router.post('/:userId', async (req, res) => {
         await findUser.save()
         res.json(newPost)
     } catch(err){
-        console.log(err)
-        
+        console.log(err)   
     }
-
-   
 });
 
 router.put('/:postId', async (req, res) => {
