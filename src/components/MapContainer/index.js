@@ -21,7 +21,7 @@ class MapContainer extends Component {
               initialCenter={{lat: lati, lng: longi}}
             >
                <Marker
-                        // icon={{url: '../lh.png', scaledSize: {height: 40, width: 40}}}
+                       
                         position={{lat: lati, lng: longi}}
                      />
             </Map>
