@@ -7,6 +7,7 @@ const userSchema = new Schema({
     profilePic: String,
     reviews: String,
     stars: String,
+    saved: String,
    _id: String,
     posts: [{
       type: mongoose.Schema.Types.ObjectId,
