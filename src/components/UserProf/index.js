@@ -26,12 +26,14 @@ class UserShow extends Component {
             console.log(err)
         }
     }
-   
+    async savePost(){
+        const savedPost = await fetch(`${process.env.REACT_APP_API_URL}/posts/${this.props.match.params.postId}`)
+        
+    }
     render(){
         return(
         <div>
         <Switch>
-            
                 <div className="content">
                     {
                     this.props.postsCreated.map((e, i) =>
