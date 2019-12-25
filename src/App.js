@@ -6,7 +6,7 @@ import PostContainer from './components/PostContainer'
 import PostList from './components/PostList'
 import MainArea from './MainArea'
 import PostShow from './components/PostShow'
-import UserShow from './components/UserShow'
+import HostShow from './components/HostShow'
 import SignInWithGoogle from './components/SignInWithGoogle'
 import SignUpWithEmailPassword from './components/SignUpWithEmailPassword'
 import Login from './components/Login'
@@ -159,7 +159,7 @@ handlePictureChange = (file) => {
           <Route exact path={ROUTES.RESET} component={ ResetPassword } />
           <Route exact path={ROUTES.NEW} render={() => 
             <CreatePost handlePictureChange={this.handlePictureChange} addPost={this.addPost} id={this.state.id} addProfilePicture={this.addProfilePicture} handleChange={this.handleChange} state={this.state}/> } />
-          <Route exact path={ROUTES.PROFILE+this.state.id+'/profile'} render={() => <UserShow id={this.state.id} currentUser={this.state.currentUser} state={this.state} postsCreated={this.state.postsCreated} />} />
+          <Route exact path={ROUTES.PROFILE+this.state.id+'/profile'} render={() => <HostShow id={this.state.id} currentUser={this.state.currentUser} state={this.state} postsCreated={this.state.postsCreated} />} />
           <Route exact path={ROUTES.PROFILE + ':postId' } render={routeProps => <PostShow viewPost={this.viewPost} {...routeProps} />} />
 
           <Route component={My404} />

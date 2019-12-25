@@ -3,8 +3,9 @@ import MapContainer from '../MapContainer'
 import './style.css'
 import { Switch } from 'react-router-dom'
 
+// show page for host
 
-class UserShow extends Component {
+class HostShow extends Component {
     state = {
         user: {}
     }
@@ -53,5 +54,5 @@ class UserShow extends Component {
 }
 
 
-export default UserShow
+export default HostShow
 
