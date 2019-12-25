@@ -7,7 +7,6 @@ import MapContainer from '../MapContainer'
 class PostShow extends Component{
     state = {
         post: {},
-        save: {}
     }
     async componentDidMount(){
         try {
@@ -25,9 +24,6 @@ class PostShow extends Component{
         } catch(err){
             console.log(err)
         }
-    }
-    async savePost (){
-        const savedPost = await fetch()
     }
     render(){
         return(
