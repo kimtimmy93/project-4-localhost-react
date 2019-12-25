@@ -26,6 +26,9 @@ class PostShow extends Component{
             console.log(err)
         }
     }
+    async savePost (){
+        const savedPost = await fetch()
+    }
     render(){
         return(
             <div>
