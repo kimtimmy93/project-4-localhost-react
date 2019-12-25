@@ -6,7 +6,8 @@ import MapContainer from '../MapContainer'
 
 class PostShow extends Component{
     state = {
-        post: {}
+        post: {},
+        save: {}
     }
     async componentDidMount(){
         try {
