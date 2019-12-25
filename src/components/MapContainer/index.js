@@ -21,13 +21,13 @@ class MapContainer extends Component {
             containerStyle={{
                width: '35%',
                height: '80%'
-            }}
-              initialCenter={{lat: lati, lng: longi}}
-            >
-               <Marker
-                       
-                        position={{lat: lati, lng: longi}}
-                     />
+            }}>
+               <Layer
+                  type="symbol"
+                  id="marker"
+                  layout={{ "icon-image": "marker-15" }}>
+                  <Feature coordinates={[lati, longi]}/>
+               </Layer>
             </ReactMapboxGl>
             </div>
         )  
@@ -35,6 +35,4 @@ class MapContainer extends Component {
 }
 
  
-export default GoogleApiWrapper({
-  apiKey: `${process.env.REACT_APP_MAP_API_KEY}`
-})(MapContainer)
+export default MapContainer
