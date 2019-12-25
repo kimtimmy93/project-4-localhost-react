@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactMapboxGl, {Layer, Feature} from 'react-mapbox-gl'
+import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl"
 
 // const mapStyles = {
 //     width: '35%',
@@ -11,7 +11,6 @@ class MapContainer extends Component {
       const lati = this.props.lat
       const longi = this.props.long
         return (
-
            <div>
             <ReactMapboxGl
               style="mapbox://styles/mapbox/streets-v8"

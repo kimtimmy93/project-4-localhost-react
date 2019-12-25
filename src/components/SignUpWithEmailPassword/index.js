@@ -36,7 +36,7 @@ class SignUpWithEmailPassWord extends Component {
                     }
                 })
                 const hitPostJson = await hitPost.json()
-                this.props.history.push(ROUTES.HOME)
+                this.props.history.push('/')
             })
             .catch(error => {
                 this.setState({ error })

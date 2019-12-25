@@ -121,7 +121,6 @@ handlePictureChange = (file) => {
       info: this.state.info,
       area: this.state.area,
       title: this.state.title
-
     }
     try {
       if(this.state.homePics) {
@@ -140,6 +139,7 @@ handlePictureChange = (file) => {
                   postsCreated: [...this.state.postsCreated, parsedResponse.data],
                 })
                 this.props.history.push('/')
+                console.log(parsedResponse, '<---pr')
           })
       }
   } catch(err){
