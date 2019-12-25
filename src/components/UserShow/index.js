@@ -31,6 +31,7 @@ class UserShow extends Component {
         return(
         <div>
         <Switch>
+            
                 <div className="content">
                     {
                     this.props.postsCreated.map((e, i) =>

@@ -5,6 +5,8 @@ const userSchema = new Schema({
     email: String,
     displayName: String,
     profilePic: String,
+    reviews: String,
+    stars: String,
    _id: String,
     posts: [{
       type: mongoose.Schema.Types.ObjectId,
