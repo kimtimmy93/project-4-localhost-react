@@ -37,12 +37,6 @@ class PostShow extends Component{
                     <MapContainer lat={this.state.post.lat} long={this.state.post.long}/>
                 </div>
             </div>
-            
-
-                
-
-
-
         )
     }
     
